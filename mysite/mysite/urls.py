@@ -17,9 +17,10 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from mysite.views import hello
-
+from mysite.views import current_datetime
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/', hello),
+    url(r'^hello/$', hello),
+    url(r'^current_datetime/$', current_datetime)
 ]
