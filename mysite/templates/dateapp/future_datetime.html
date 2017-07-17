@@ -1,13 +1,5 @@
-<!DOCTYPE HTML PUBLIC "-//W3C/DTD HTML 4.01//EN">
-
-<html lang="en">
-<head>
-    <title>A future time</title>
-</head>
-<body>
-    <h1>My timestamp page</h1>
+{% extends "dateapp/base.html" %}
+{% block title %}A future time{% endblock %}
+{% block content %}
     <p>In {{ hour_offset }} hours, it will be {{ incremented_time }}.</p>
-    <hr>
-    <p>Thanks</p>
-</body>
-</html>
+{% endblock %}
