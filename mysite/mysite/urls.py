@@ -17,12 +17,12 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from mysite.views import hello
-from mysite.views import current_datetime
+from mysite.views import current_date
 from mysite.views import hours_ahead
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hello/$', hello),
-    url(r'^current_datetime/$', current_datetime),
+    url(r'^current_date_now/$', current_date),
     url(r'^current_datetime/plus/(\d{1,2})/$', hours_ahead),
 ]

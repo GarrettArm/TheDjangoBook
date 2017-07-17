@@ -1,5 +1,5 @@
 from django.http import HttpResponse, Http404
-
+from django.template.loader import get_template
 import datetime
 
 
@@ -7,9 +7,10 @@ def hello(request):
     return HttpResponse('Hello world')
 
 
-def current_datetime(request):
+def current_date(request):
     current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-    html = "<html><body>It is now {} </body></html>".format(current_time)
+    t = get_template('current_datetime.html')
+    html = t.render({'current_date': current_time})
     return HttpResponse(html)
 
 
