@@ -9,7 +9,7 @@ def hello(request):
 
 def current_date(request):
     current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-    return render(request, 'current_datetime.html', {'current_datestuff': current_time})
+    return render(request, 'dateapp/current_datetime.html', {'current_datestuff': current_time})
 
 
 def hours_ahead(request, offset):
