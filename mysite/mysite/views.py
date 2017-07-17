@@ -1,6 +1,8 @@
 from django.http import HttpResponse, Http404
 from django.shortcuts import render
+
 import datetime
+import os
 
 
 def hello(request):
@@ -9,7 +11,9 @@ def hello(request):
 
 def current_date(request):
     current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M")
-    return render(request, 'dateapp/current_datetime.html', {'current_datestuff': current_time})
+    context = {'current_datestuff': current_time}
+    template_path = os.path.join('dateapp', 'current_datetime.html')
+    return render(request, template_path, context)
 
 
 def hours_ahead(request, offset):
@@ -18,5 +22,6 @@ def hours_ahead(request, offset):
     except ValueError:
         raise Http404()
     incremented_time = datetime.datetime.now() + datetime.timedelta(hours=offset)
-    html = "<html><body>In {} hours, it will be {}</body></html>".format(offset, incremented_time)
-    return HttpResponse(html)
+    context = {'hour_offset': offset, 'incremented_time': incremented_time, }
+    template_path = os.path.join('dateapp', 'future_datetime.html')
+    return render(request, template_path, context)
