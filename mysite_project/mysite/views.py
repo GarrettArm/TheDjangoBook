@@ -45,7 +45,7 @@ def contact(request):
             )
             return HttpResponseRedirect('/contact/thanks')
     else:
-        form = ContactForm()
+        form = ContactForm(initial={'subject': 'initial text, weird'})
     return render(request, 'contact_form.html', {'form': form, })
 
 
