@@ -19,11 +19,16 @@ from django.contrib import admin
 from mysite.views import hello
 from mysite.views import current_date
 from mysite.views import hours_ahead
+from mysite.views import contact
+from mysite.views import thanks_logic
+
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^hello/$', hello),
     url(r'^current_date_now/$', current_date),
     url(r'^current_datetime/plus/(\d{1,2})/$', hours_ahead),
+    url(r'^contact/$', contact),
+    url(r'^contact/thanks/$', thanks_logic),
     url(r'^', include('books.urls')),
 ]
