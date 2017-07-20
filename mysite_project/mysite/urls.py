@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^review/(?P<year>[0-9]{4})/(?P<month>[0-9]{1,2})/(?P<day>[0-9]{1,2})/$',
         views.review_details),
     # url('^review/(?P<year>[0-9]{4})', views.review_details),
-    url(r'^', include('books.urls', namespace='books')),
+    url(r'^books', include('books.urls', namespace='books')),
 ]
