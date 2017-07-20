@@ -13,22 +13,22 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
+from django.conf import settings
 from django.conf.urls import url, include
 from django.contrib import admin
 
-from mysite.views import hello
-from mysite.views import current_date
-from mysite.views import hours_ahead
-from mysite.views import contact
-from mysite.views import thanks_logic
+from . import views
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/$', hello),
-    url(r'^current_date_now/$', current_date),
-    url(r'^current_datetime/plus/(\d{1,2})/$', hours_ahead),
-    url(r'^contact/$', contact),
-    url(r'^contact/thanks/$', thanks_logic),
-    url(r'^', include('books.urls')),
+    url(r'^hello/$', views.hello, name='hello_url'),
+    url(r'^current_date_now/$', views.current_date),
+    url(r'^current_datetime/plus/(\d{1,2})/$', views.hours_ahead),
+    url(r'^contact/$', views.contact),
+    url(r'^contact/thanks/$', views.thanks_logic),
+    url(r'^review/(?P<year>[0-9]{4})/(?P<month>[0-9]{1,2})/(?P<day>[0-9]{1,2})/$',
+        views.review_details),
+    # url('^review/(?P<year>[0-9]{4})', views.review_details),
+    url(r'^', include('books.urls', namespace='books')),
 ]

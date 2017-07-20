@@ -52,5 +52,6 @@
         {% csrf_token %}
         <input type="submit" value="Submit">
     </form>
+    <a href="{% url 'books:search_form_page' %}">Search Books</a>
 </body>
 </html>

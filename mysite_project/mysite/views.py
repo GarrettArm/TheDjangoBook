@@ -51,3 +51,9 @@ def contact(request):
 
 def thanks_logic(request):
     return render(request, 'thanks_page.html', )
+
+
+def review_details(request, year, month, day):
+    sum = int(year) + int(month) + int(day)
+    text = "Year: {}, Month: {}, Day {}, which add to {}".format(year, month, day, sum)
+    return HttpResponse(text)
