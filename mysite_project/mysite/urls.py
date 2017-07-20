@@ -31,4 +31,5 @@ urlpatterns = [
         views.review_details),
     # url('^review/(?P<year>[0-9]{4})', views.review_details),
     url(r'^books', include('books.urls', namespace='books')),
+    url(r'^etextbook', include('etextbook.urls', namespace='etextbook')),
 ]
