@@ -4,10 +4,11 @@
     <title>Let's get started</title>
 </head>
 <body>
-    <form action="UploadFile" method="post">
+    <h1>If you upload a raw Bookstore csv, I will return a cleaned up version.</h1>
+    <form method="post" enctype='multipart/form-data'>
     {% csrf_token %}
     {{ form }}
-    <input type="submit" value="Submit">
+    <button type="submit">Submit</button>
     </form>
 </body>
 </html>

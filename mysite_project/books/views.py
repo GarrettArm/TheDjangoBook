@@ -20,10 +20,9 @@ def search(request):
 
     # verbose step-by-step of the magic render shortcut
     books_queryset = Book.objects.filter(title__icontains=search_string)
-    # template_file = 'books/search_results.html'
-    # template_text = get_template(template_file)
+    # results_template = get_template('books/search_results.html')
     # context = {'books': books_queryset, 'query': search_string}
-    # SafeText = template_text.render(context)
+    # SafeText = results_template.render(context)
     # return HttpResponse(SafeText)
 
     # more and more succinct but more magic ways of saying this

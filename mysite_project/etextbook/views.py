@@ -1,25 +1,28 @@
-from django.shortcuts import render
-from .forms import FileUploadForm
-
 import os
+from django.shortcuts import render
+from django.http import HttpResponse
+from .forms import UploadFileForm
+from utilities.etextbookSearch import parse_bookstore_csv
 
 
-def save_file(file):
-    with os.open('/home/james/Desktop/filename.txt', 'wb+') as f:
-        for chunk in file.chunks():
-            print('writing')
-            f.write(chunk)
-
-
-def bookstore_spreadsheet(request):
+def read_spreadsheet(request):
     if request.method == 'POST':
-        print('got post')
-        form = FileUploadForm(request.POST, request.FILES)
-        print(form)
+        form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            print('is_valid')
-            save_file(request.FILES['file'])
-            return render(request, 'etextbook/spreadsheet_page.html')
+            form.save()
+            filename = request.FILES['document'].name
+            orig_csv = os.path.join('uploaded_spreadsheets', filename)
+            new_csv = os.path.join('uploaded_spreadsheets', "cleaned_{}".format(filename))
+            parse_bookstore_csv.main(orig_csv, new_csv)
+            return return_spreadsheet(request, filepath=new_csv)
     else:
-        form = FileUploadForm()
-    return render(request, 'etextbook/spreadsheet_page.html', {'form': form} )
+        form = UploadFileForm()
+    return render(request, 'etextbook/spreadsheet_page.html', {'form': form})
+
+
+def return_spreadsheet(request, filepath=None):
+    filename = os.path.split(filepath)[-1]
+    with open(filepath, 'r', encoding='utf-8') as f:
+        response = HttpResponse(f, content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename={}'.format(filename)
+        return response

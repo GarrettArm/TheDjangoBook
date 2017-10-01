@@ -1,5 +1,8 @@
 from django import forms
+from .models import Document
 
 
-class FileUploadForm(forms.Form):
-    filebox = forms.FileField(label="Select the raw bookstore spreadsheet")
+class UploadFileForm(forms.ModelForm):
+    class Meta:
+        model = Document
+        fields = ('description', 'document', )
