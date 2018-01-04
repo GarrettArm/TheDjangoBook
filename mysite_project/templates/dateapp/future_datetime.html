@@ -1,5 +1,6 @@
-{% extends "dateapp/base.html" %}
-{% block title %}A future time{% endblock %}
+{% extends "base.html" %}
+
+{% block title %}A future time{% endblock title %}
 {% block content %}
     <p>In {{ hour_offset }} hours, it will be {{ incremented_time }}.</p>
-{% endblock %}
+{% endblock content %}

@@ -14,25 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 # from django.conf import settings
-from django.conf.urls import url, include
+# from django.conf.urls import url, include
+from django.urls import path, include
 from django.contrib import admin
 
 from . import views
-import etextbook
 
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^hello/$', views.hello, name='hello_url'),
-    url(r'^current_date_now/$', views.current_date),
-    url(r'^current_datetime/plus/(\d{1,2})/$', views.hours_ahead),
-    url(r'^contact/$', views.contact),
-    url(r'^contact/thanks/$', views.thanks_logic),
-    url(r'^review/(?P<year>[0-9]{4})/(?P<month>[0-9]{1,2})/(?P<day>[0-9]{1,2})/$',
-        views.review_details),
-    # url('^review/(?P<year>[0-9]{4})', views.review_details),
-    url(r'^books', include('books.urls', namespace='books')),
-    url(r'^etextbook', include('etextbook.urls', namespace='etextbook')),
-    url(r'^$', etextbook.views.read_spreadsheet)
-
+    path('current_date_now/', views.current_date),
+    path('current_datetime/plus/<int:hours>', views.hours_ahead),
+    path('contact/', views.contact),
+    path('contact/thanks/', views.thanks_logic),
+    path('add/<int:year>/<int:month>/<int:day>/', views.add_nonsense),
+    path('add/<int:year>', views.add_nonsense),
+    path('books/', include('books.urls'),),
+    path('etextbook/', include('etextbook.urls'), name='etextbook'),
+    path('polls/', include('polls.urls')),
+    path('admin/', admin.site.urls),
+    path('', views.hello, name='hello_url'),
 ]

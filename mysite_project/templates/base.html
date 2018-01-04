@@ -1,0 +1,20 @@
+{% load staticfiles %}
+<html>
+<head>
+    <title>
+    {% block title %}A Base Template Page{% endblock %}
+    </title>
+</head>
+<body>
+    <div class="Page Header">
+    {% block header %}Base Header{% endblock header %}
+    </div>
+    {% block content %}
+        <h1>Base Block Content</h1>
+    {% endblock content %}
+    <hr>
+    <p>
+    {% block footer %}Base Block Footer{% endblock footer %}
+    </p>
+</body>
+</html>

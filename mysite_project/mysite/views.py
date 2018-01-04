@@ -19,13 +19,9 @@ def current_date(request):
     return render(request, template_path, context)
 
 
-def hours_ahead(request, offset):
-    try:
-        offset = int(offset)
-    except ValueError:
-        raise Http404()
-    incremented_time = datetime.datetime.now() + datetime.timedelta(hours=offset)
-    context = {'hour_offset': offset, 'incremented_time': incremented_time, }
+def hours_ahead(request, hours=0):
+    incremented_time = datetime.datetime.now() + datetime.timedelta(hours=hours)
+    context = {'hour_offset': hours, 'incremented_time': incremented_time, }
     template_path = os.path.join('dateapp', 'future_datetime.html')
     return render(request, template_path, context)
 
@@ -53,7 +49,7 @@ def thanks_logic(request):
     return render(request, 'thanks_page.html', )
 
 
-def review_details(request, year, month, day):
+def add_nonsense(request, year=0, month=0, day=0):
     sum = int(year) + int(month) + int(day)
     text = "Year: {}, Month: {}, Day {}, which add to {}".format(year, month, day, sum)
     return HttpResponse(text)

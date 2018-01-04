@@ -1,8 +1,8 @@
-from django.conf.urls import url
+from django.urls import path
 from etextbook import views
 
-
+app_name = 'etextbook'
 urlpatterns = [
-    url(r'bookstore-spreadsheet/$', views.read_spreadsheet, name='upload_spreadsheet'),
-    url(r'', views.read_spreadsheet),
+    path('bookstore-spreadsheet/', views.read_spreadsheet, name='upload_spreadsheet'),
+    path('', views.read_spreadsheet),
 ]

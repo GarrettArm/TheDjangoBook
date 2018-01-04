@@ -1,7 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Contact Us</title>
+{% extends "base.html" %}
+
+
+{% block title %}Contact Us{% endblock title %}
 <!--     <style type='text/css'>
         u1.errorlist {
             margin: 0;
@@ -16,8 +16,7 @@
             padding 4px 5px;
         }
     </style> -->
-</head>
-<body>
+{% block content %}
     <h1>Contact us</h1>
     {% if form.errors %}
         <p style='color: red;'>
@@ -53,5 +52,4 @@
         <input type="submit" value="Submit">
     </form>
     <a href="{% url 'books:search_form_page' %}">Search Books</a>
-</body>
-</html>
+{% endblock content %}
