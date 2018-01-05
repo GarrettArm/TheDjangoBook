@@ -1,5 +1,6 @@
-{% load staticfiles %}
 <html>
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}" />
 <head>
     <title>
     {% block title %}A Base Template Page{% endblock %}

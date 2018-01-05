@@ -2,6 +2,9 @@ from django.contrib import admin
 
 from .models import Document
 
-admin.site.register(Document)
 
-# Register your models here.
+class DocumentAdmin(admin.ModelAdmin):
+    list_display = ('description', 'document', 'uploaded_at')
+
+
+admin.site.register(Document, DocumentAdmin)
