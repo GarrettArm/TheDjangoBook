@@ -8,3 +8,6 @@ class Document(models.Model):
 
     def __str__(self):
         return self.description or self.id
+
+    def help_text(self):
+        return """each uploaded files is saved at /uploaded_spreadsheets/ and is accessible through the admin panel"""
