@@ -1,21 +1,26 @@
 <html>
 {% load static %}
-<link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}" />
+<link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
 <head>
     <title>
     {% block title %}A Base Template Page{% endblock %}
     </title>
 </head>
 <body>
-    <div class="Page Header">
-    {% block header %}Base Header{% endblock header %}
+    <div class="container">
+        <ol class="breadcrumb my-4">
+            <li class=breadcrumb-item-active>{% block header %}Base Header{% endblock header %}</li>
+        </ol>
+        <p class="lead">
+        {% block content %}
+            <p>Base Block Content</p>
+        {% endblock content %}
+        </p>
     </div>
-    {% block content %}
-        <h1>Base Block Content</h1>
-    {% endblock content %}
-    <hr>
-    <p>
-    {% block footer %}Base Block Footer{% endblock footer %}
-    </p>
+    <footer class="footer">
+        <div class="container">
+            <p class="text-muted">{% block footer %}Base Block Footer{% endblock footer %}</p>
+        </div>
+    </footer>
 </body>
 </html>
