@@ -1,11 +1,16 @@
-from django.http import HttpResponse, Http404, HttpResponseRedirect
-from django.shortcuts import render
-from django.core.mail import send_mail, get_connection
-
 import datetime
 import os
 
+from django.http import HttpResponse, Http404, HttpResponseRedirect
+from django.shortcuts import render
+from django.core.mail import send_mail, get_connection
+from django.views.generic import TemplateView
+
 from mysite.forms import ContactForm
+
+
+class FrontView(TemplateView):
+    template_name = 'mysite/frontpage.html'
 
 
 def hello(request):

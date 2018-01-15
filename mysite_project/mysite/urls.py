@@ -17,6 +17,7 @@ Including another URLconf
 # from django.conf.urls import url, include
 from django.urls import path, include
 from django.contrib import admin
+from django.contrib.auth.views import login, logout
 
 from . import views
 
@@ -32,5 +33,9 @@ urlpatterns = [
     path('etextbook/', include('etextbook.urls'), name='etextbook'),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
-    path('', views.hello, name='hello_url'),
+    path('chat/', include('chatroom.urls')),
+    path('accounts/login/', login),
+    path('accounts/logout/', logout),
+    path('', views.FrontView.as_view(), name='hello_url'),
+
 ]
