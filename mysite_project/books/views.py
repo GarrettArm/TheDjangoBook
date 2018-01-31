@@ -30,5 +30,9 @@ def search(request):
     # return render(request, t, context)
 
     # most magic & succinct way
-    return render(request, 'books/search_results.html',
-                  {'books': books_queryset, 'query': search_string})
+    temp_stuff = render(request, 'books/search_results.html',
+        {'books': books_queryset, 'query': search_string})
+    print(temp_stuff._container)
+    return temp_stuff
+    # return render(request, 'books/search_results.html',
+                  # {'books': books_queryset, 'query': search_string})

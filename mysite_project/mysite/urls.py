@@ -18,6 +18,7 @@ Including another URLconf
 from django.urls import path, include
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
+import debug_toolbar
 
 from . import views
 
@@ -39,3 +40,5 @@ urlpatterns = [
     path('', views.FrontView.as_view(), name='hello_url'),
 
 ]
+
+urlpatterns = [path('__debug__', include(debug_toolbar.urls)), ] + urlpatterns
