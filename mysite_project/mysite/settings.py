@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'channels',
     'chatroom.apps.ChatConfig',
+    'contact.apps.ContactConfig',
     'debug_toolbar',
+
 ]
 
 MIDDLEWARE = [

@@ -15,3 +15,6 @@ class ContactForm(forms.Form):
         if word_count < 4:
             raise forms.ValidationError('Not enough words')
         return cd
+
+    def send_email(self):
+        pass

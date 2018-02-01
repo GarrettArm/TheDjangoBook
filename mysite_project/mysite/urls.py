@@ -26,11 +26,10 @@ from . import views
 urlpatterns = [
     path('current_date_now/', views.current_date),
     path('current_datetime/plus/<int:hours>', views.hours_ahead),
-    path('contact/', views.contact),
-    path('contact/thanks/', views.thanks_logic),
     path('add/<int:year>/<int:month>/<int:day>/', views.add_nonsense),
     path('add/<int:year>', views.add_nonsense),
     path('books/', include('books.urls'),),
+    path('contact/', include('contact.urls'), name='contact'),
     path('etextbook/', include('etextbook.urls'), name='etextbook'),
     path('polls/', include('polls.urls')),
     path('admin/', admin.site.urls),
