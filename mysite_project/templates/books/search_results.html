@@ -6,9 +6,9 @@
     <p>You searched for: <strong>{{ query }}</strong></p>
     {% if books %}
         <p>Found {{ books|length }} book{{ books|pluralize }}.</p>
-        <ul>
+        <ul class="list-group">
             {% for book in books %}
-            <li>{{ book.title }}</li>
+            <li class="list-group-item">{{ book.title }}</li>
             {% endfor %}
         </ul>
     {% else %}

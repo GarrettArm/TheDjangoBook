@@ -1,10 +1,12 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Let's get started{% endblock title %}
+{% block title %}eTextbook{% endblock title %}
+
+{% block header %}Upload Page{% endblock header %}
 
 {% block content %}
-    <h1>If you upload a raw Bookstore spreadsheet, I will return a cleaned up version.</h1>
+    <h3>If you upload a raw Bookstore spreadsheet, I will return a cleaned up version.</h3>
     {% if errors %}
         {% for i in errors %}
             <p>{{ i }}</p> 

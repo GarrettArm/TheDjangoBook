@@ -5,10 +5,10 @@
 
 {% block content %}
 
-    <ul class="rooms">
+    <ul class="rooms list-group">
         <h3>Open Rooms:</h3>
         {% for room in rooms %}
-            <li class="room-link" data-room-id="{{ room.id }}">{{ room }}</li>
+            <li class="room-link list-group-item" data-room-id="{{ room.id }}">{{ room }}</li>
         {% empty %}
             <p class="empty">No chat rooms defined. Maybe make some in the <a href="{% url 'admin:index' %}">admin</a>?</p>
         {% endfor %}

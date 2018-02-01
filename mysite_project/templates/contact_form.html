@@ -1,21 +1,10 @@
 {% extends "base.html" %}
 
 
-{% block title %}Contact Us{% endblock title %}
-<!--     <style type='text/css'>
-        u1.errorlist {
-            margin: 0;
-            padding: 0;
-        }
-        .errorlist li {
-            background-color: red;
-            color: white;
-            display: block;
-            font-size: 1.2em;
-            margin: 0 0 3px;
-            padding 4px 5px;
-        }
-    </style> -->
+{% block title %}Contact{% endblock title %}
+
+{% block header %}Contact Form{% endblock header %}
+
 {% block content %}
     <h1>Contact us</h1>
     {% if form.errors %}
@@ -31,25 +20,6 @@
         {% csrf_token %}
         <input type='submit' value='Submit'>
     </form>
-    
-    <form action="" method="post">
-        <div class="field">
-            {{ form.subject.errors }}
-            <label for="id_subject">Subject:</label>
-            {{ form.subject }}
-        </div>
-        <div class="field">
-            {{ form.email.errors }}
-            <label for="id_email">Your e-mail address:</label>
-            {{ form.email }}
-        </div>
-        <div class="field">
-            {{ form.message.errors }}
-            <label for="id_message">Message:</label>
-            {{ form.message }}
-        </div>
-        {% csrf_token %}
-        <input type="submit" value="Submit">
-    </form>
     <a href="{% url 'books:search_form_page' %}">Search Books</a>
 {% endblock content %}
+

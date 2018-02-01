@@ -1,5 +1,9 @@
 {% extends 'base.html' %}
 
+{% block title %}Polls{% endblock %}
+
+{% block header %}Poll Choices{% endblock header %}
+
 {% block content %}
 <h1>{{ question.question_text }}</h1>
 {% if error_message %}
