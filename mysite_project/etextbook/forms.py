@@ -1,6 +1,5 @@
-import os
-
 from django import forms
+
 from .models import Document
 
 
@@ -11,10 +10,6 @@ class UploadFileForm(forms.ModelForm):
 
     def clean_document(self):
         data = self.cleaned_data['document']
-        filename = data.name
-        if os.path.splitext(filename)[1] != '.csv':
-            print('not valid')
+        if data.content_type != 'text/csv':
             raise forms.ValidationError('The file must be a csv.')
-        else:
-            print('validated it')
         return data

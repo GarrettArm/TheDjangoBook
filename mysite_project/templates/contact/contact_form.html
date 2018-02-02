@@ -12,14 +12,15 @@
             Please correct the error{{ form.errors|pluralize }} below
         </p>
     {% endif %}
-
-    <form action='' method='post' novalidate>
-        <table>
+    <div class="form-group">
+    <form action='' method='post' class="form-control">
+        <table class="display responsive" width="100%">
             {{ form.as_table }}
         </table>
         {% csrf_token %}
         <input type='submit' value='Submit'>
     </form>
+    </div>
     <a href="{% url 'books:search_form_page' %}">Search Books</a>
 {% endblock content %}
 
