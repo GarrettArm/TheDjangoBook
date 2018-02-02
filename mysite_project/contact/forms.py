@@ -1,20 +1,19 @@
-from django import forms
+from django.forms import ModelForm
+from django.forms import ValidationError
+from .models import Comment
 
 
-class ContactForm(forms.Form):
-    subject = forms.CharField(max_length=100)
-    email = forms.EmailField(required=False, label='An email')
-    message = forms.CharField(widget=forms.Textarea)
+class ContactForm(ModelForm):
+    class Meta:
+        model = Comment
+        fields = ['subject', 'email', 'message']
 
-    # i don't like this approach.  Django is doing magic by automatically
-    # running any def 'clean_{}'format(form fieldname) when validating.
-    # It's too magic for python.
+    def send_email(self):
+        pass
+
     def clean_message(self):
         cd = self.cleaned_data['message']
         word_count = len(cd.split())
         if word_count < 4:
-            raise forms.ValidationError('Not enough words')
+            raise ValidationError('Not enough words')
         return cd
-
-    def send_email(self):
-        pass
