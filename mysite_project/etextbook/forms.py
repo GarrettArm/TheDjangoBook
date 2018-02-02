@@ -13,5 +13,8 @@ class UploadFileForm(forms.ModelForm):
         data = self.cleaned_data['document']
         filename = data.name
         if os.path.splitext(filename)[1] != '.csv':
+            print('not valid')
             raise forms.ValidationError('The file must be a csv.')
+        else:
+            print('validated it')
         return data
