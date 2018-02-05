@@ -1,47 +1,78 @@
 <!DOCTYPE html>
 <html>
 {% load static %}
+
   <head>
     <title>
-    {% block title %}Base Title{% endblock %}
+      {% block title %}Base Title{% endblock title %}
     </title>
-    <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/style.css' %}" />
-    <script src="{% static "chatroom/js/jquery-1.12.2.min.js" %}" type="text/javascript"></script>
-    <script src="{% static "channels/js/websocketbridge.js" %}" type="text/javascript"></script>
-    {% block extra_head %}{% endblock %}
-  </head>
 
-  <body>
+    {% block styles %}
+      <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
+      <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/style.css' %}" />
+    {% endblock styles %}
+    
+    {% block js %}
+      <script src="{% static "chatroom/js/jquery-1.12.2.min.js" %}" type="text/javascript"></script>
+    {% endblock js %}
+
+  </head>
+  
+  <div id="navbar" class="center">
     <nav class="navbar navbar-default navbar-color">
       <div class="container">
-        <div class="col-sm-10">
+        <div class="col-sm-2">
+        </div>
+        <div class="col-sm-8">
           <h1 class=breadcrumb-item-active>{% block header %}Base Header{% endblock header %}</h1>
         </div>
-        <div class="col-sm-1">
-        {% if user.is_authenticated %}
-          <a href="/accounts/logout/" class="btn btn-info btn-sm" role="button">Logout</a>
-        {% else %}
-          <a href="/accounts/login/" class="btn btn-info btn-sm" role="button">Login</a>
-        {% endif %}
+        <div class="col-sm-2">
+          {% if user.is_authenticated %}
+            <a href="/accounts/logout/" class="btn btn-info btn-sm" role="button">Logout {{ user.username }}</a>
+          {% else %}
+            <a href="/accounts/login/" class="btn btn-info btn-sm" role="button">Login</a>
+          {% endif %}
         </div>
       </div>
     </nav>
+  </div>
 
-    <div class="container">
-      <p class="lead">
-      {% block content %}
-        <p>Base Block Content</p>
-      {% endblock content %}
-      </p>
-    {% block extra_body %}
-    {% endblock extra_body%}
-    </div>
-
-    <footer class="footer">
-      <div class="container">
-        <span class="text-muted">{% block footer %}Base Block Footer{% endblock footer %}</span>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-sm-2">
+        {% block sidebar %}
+        <div class="sidebar-header">
+          <h3>Links</h3>
+        </div>
+        <ul class="sidebar-nav">
+          <li><a href="\" class="sidebar-item">Base Template</a></li>
+          <li><a href="{% url 'current_date' %}" class="sidebar-item">Current Time</a></li>
+          <li><a href="{% url 'polls:index' %}" class="sidebar-item">Take a Poll</a></li>
+          <li><a href="{% url 'books:search_form_page' %}" class="sidebar-item">Search for a Book</a></li>
+          <li><a href="{% url 'etextbook:upload' %}" class="sidebar-item">Process eTextbook csv</a></li>
+          <li><a href="{% url 'chatroom:lobby' %}" class="sidebar-item">Chat with someone</a></li>
+          <li><a href="{% url 'contact:contact' %}" class="sidebar-item">Contact Us</a></li>
+          {% if user.is_authenticated %}
+          <li><a href="{% url 'admin:index' %}" class="sidebar-item">Admin Panel</a></li>
+          {% endif %}
+        </ul>
+        {% endblock sidebar %}
       </div>
-    </footer>
-  </body>
+
+      <div class="col-sm-10">
+        {% block content %}
+          <p>Base Block Content</p>
+        {% endblock content %}
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer">
+      <div class="container">
+        <span class="text-muted">
+          {% block footer %}Base Block Footer{% endblock footer %}
+        </span>
+      </div>
+  </footer>
+
 </html>

@@ -3,5 +3,5 @@ from .views import index
 
 app_name = 'chatroom'
 urlpatterns = [
-    path('', index),
+    path('', index, name='lobby'),
 ]

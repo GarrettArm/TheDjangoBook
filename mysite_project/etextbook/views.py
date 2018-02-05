@@ -1,4 +1,5 @@
-import os
+import csv
+
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views.generic.edit import FormView
@@ -21,50 +22,24 @@ class SpreadsheetView(FormView):
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
+            form.save()
             response = convert_csv(self.request)
             return response
         else:
             return render(request, self.template_name, {'form': form})
 
-    def form_valid(self, form):
-        convert_csv(self.request)
-        form.save()
-        return super().form_valid(form)
-
 
 def convert_csv(request):
-    filename = request.FILES['document'].name
-    orig_csv = os.path.join('uploaded_spreadsheets', filename)
-    new_csv = os.path.join('uploaded_spreadsheets', "cleaned_{}".format(filename))
-    parse_bookstore_csv.main(orig_csv, new_csv)
-    csv_response = return_spreadsheet(request, filepath=new_csv)
-    return csv_response
-
-
-def return_spreadsheet(request, filepath=None):
-    filename = os.path.split(filepath)[-1]
-    with open(filepath, 'r', encoding='utf-8') as f:
-        response = HttpResponse(f, content_type='text/csv')
-        response['Content-Disposition'] = 'attachment; filename={}'.format(filename)
-        return response
-
-
-# def read_spreadsheet(request):
-#     if request.method == 'POST':
-#         form = UploadFileForm(request.POST, request.FILES)
-#         if form.is_valid():
-#             filename = request.FILES['document'].name
-#             print(filename)
-#             if os.path.splitext(filename)[1] != '.csv':
-#                 print('is not csv')
-#                 form = UploadFileForm()
-#                 return render(request, 'etextbook/spreadsheet_page.html', {'form': form, 'errors': ['Uploaded file must be a csv.']})
-#             orig_csv = os.path.join('uploaded_spreadsheets', filename)
-#             new_csv = os.path.join('uploaded_spreadsheets', "cleaned_{}".format(filename))
-#             print(orig_csv, new_csv)
-#             parse_bookstore_csv.main(orig_csv, new_csv)
-#             form.save()
-#             return return_spreadsheet(request, filepath=new_csv)
-#     else:
-#         form = UploadFileForm()
-#     return render(request, 'etextbook/spreadsheet_page.html', {'form': form})
+    request_file = request.FILES['document']
+    uploaded_file = request_file.open().readlines()
+    cleaned_csv_list = parse_bookstore_csv.cleanup_original_text(uploaded_file)
+    response = HttpResponse(content_type='text/csv')
+    cleaned_filename = 'cleaned-{}'.format(request_file.name)
+    response['Content-Disposition'] = 'attachment; filename={}'.format(cleaned_filename)
+    writer = csv.writer(response,
+                        delimiter=',',
+                        quotechar='"',
+                        quoting=csv.QUOTE_ALL)
+    for line in cleaned_csv_list:
+        writer.writerow(line)
+    return response

@@ -16,12 +16,18 @@
 body {
   background-color: #bfc4bc;
 }
-.polls-table {
-  border-collapse: collapse;
-  border: 2px solid rgb(200,200,200);
-  letter-spacing: 1px;
-  font-size: 0.8rem;    
+
+.sidebar-header {
+  margin-top: 20px;
+  color: Brown;
 }
-.polls-table,td {
-  text-align: left;    
+
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar-item {
+  color: blue;
 }
