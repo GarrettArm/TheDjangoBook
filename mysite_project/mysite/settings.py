@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'channels',
     'chatroom.apps.ChatConfig',
     'contact.apps.ContactConfig',
+    'ajax_polls.apps.AjaxPollsConfig',
     # 'debug_toolbar',
 
 ]
