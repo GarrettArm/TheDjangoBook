@@ -1,16 +1,23 @@
 {% extends "base.html" %}
-
+{% load static %}
 
 {% block title %}Contact{% endblock title %}
 
 {% block header %}Contact Form{% endblock header %}
 
+{% block styles %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{% static 'contact/css/style.css' %}" />
+{% endblock styles %}
+
 {% block content %}
     <h1>Contact us</h1>
     {% if form.errors %}
-        <p style='color: red;'>
-            Please correct the error{{ form.errors|pluralize }} below
-        </p>
+        {% for field in form %}
+            {% for error in field.errors %}
+                <p style='color: red;'>"{{ field.name|title }}" has an error:  {{ error }}</p> 
+            {% endfor %}
+        {% endfor %}
     {% endif %}
     <div class="form-group">
     <form action='' method='post' class="form-control">
@@ -21,6 +28,5 @@
         <input type='submit' value='Submit'>
     </form>
     </div>
-    <a href="{% url 'books:search_form_page' %}">Search Books</a>
 {% endblock content %}
 
