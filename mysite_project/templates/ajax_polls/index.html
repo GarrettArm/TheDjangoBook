@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Polls{% endblock title %}
+{% block header %}Poll Options{% endblock header %}
+
+{% block loadjs %}
+    {{ block.super }}
+    <script src="{% static 'ajax_polls/js/jquery-3.3.1.min.js' %}" type="text/javascript"></script>
+{% endblock loadjs %}
+
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'ajax_polls/css/style.css' %}" />
+{% endblock styles %}
+
+{% block content %}
+  <div>
+    {% if latest_question_list %}
+      <ul class="list-group">
+        {% for question in latest_question_list %}
+          <li class="list-group-item">
+            <a name="{{ question.id }}" class="ajax-polls-item">{{ question.question_text }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty">No polls are available.</p>
+    {% endif %}
+  </div>
+{% endblock content %}
+
+{% block js %}
+<script type="text/javascript">
+  var $pollsItemList = document.getElementsByClassName("ajax-polls-item");
+  console.log($pollsItemList);
+  var $whole_url = "{% url 'ajax_polls:ajax_polls' %}";
+
+  for ($i = 0; $i < $pollsItemList.length; $i++) {
+    $pollsItemList[$i].addEventListener("mouseover", function() {
+      new $.ajax({
+        url: $whole_url,
+        method: 'GET',
+        data: {'question_pk': $i, },
+        onSuccess: function(dropDowns) {
+          console.log('it came back');
+        }
+      })
+    })
+  }
+
+</script>
+{% endblock js %}

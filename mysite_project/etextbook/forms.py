@@ -6,7 +6,7 @@ from .models import Document
 class UploadFileForm(forms.ModelForm):
     class Meta:
         model = Document
-        fields = ('description', 'document', )
+        fields = ('description', 'document')
 
     def clean_document(self):
         data = self.cleaned_data['document']

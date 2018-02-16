@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Polls{% endblock title %}
+{% block header %}Poll Results{% endblock header %}
+
+{% block styles %}
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}" />
+{% endblock styles %}
+
+
+{% block content %}
+  <h3 class="polls-item"> {{ question.question_text }}</h3>
+  <table class="table">
+    <tr>
+      <td> was published on:</td>
+      <td>{{ question.pub_date }}</td>
+    </tr>
+    <tr>
+      <td> which is recent?</td>
+      <td>{{ question.was_published_recently }}</td>
+    </tr>
+  </table>
+  <br><br>
+  <table class="table">
+    {% for choice in question.choice_set.all %}
+      <tr>
+        <td class="choice-item" id="choice-item">{{ choice.choice_text }}</td>
+        <td>has {{ choice.votes}} vote{{choice.votes|pluralize }}</td>
+      </tr>
+    {% endfor %}
+  </table>
+  <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+{% endblock content %}
+
+{% block js %}
+  {{ block.super }}
+  <script>
+    var kwargs_json = {{ kwargs_json|safe }};
+    document.write(kwargs_json.length);
+    for (i = 0; i < kwargs_json.length; i++) {
+      console.log(JSON.stringify(kwargs_json[i]));
+    }
+  </script>
+{% endblock js %}

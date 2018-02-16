@@ -10,11 +10,12 @@ urlpatterns = [
     path('admin/', admin.site.urls, name='admin_pnl'),
     path('accounts/login/', login),
     path('accounts/logout/', logout, {'next_page': '/'}),
-    path('current_date_now/', views.current_date, name='current_date'),
+    path('current_date_now/', views.CurrentDateView.as_view(), name='current_date'),
     path('books/', include('books.urls'), name='books'),
     path('contact/', include('contact.urls'), name='contact'),
     path('etextbook/', include('etextbook.urls'), name='etextbook'),
     path('polls/', include('polls.urls'), name='polls'),
+    path('ajax_polls/', include('ajax_polls.urls'), name='ajax_polls'),
     path('chat/', include('chatroom.urls'), name='chatroom'),
     path('', views.FrontView.as_view(), name='frontpage'),
 
