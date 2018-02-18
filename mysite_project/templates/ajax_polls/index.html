@@ -41,11 +41,27 @@
         method: 'GET',
         data: {'question_pk': element['name'], },
         success: function(response) {
-          console.log('it came back');
           console.log(response);
+          addChild(element, response);
         }
       });      
     });
+  }
+  addChild = function (element, response) {
+    var newList = document.createElement("UL");
+    element.appendChild(newList);
+    for (var key in response) {
+      if (response.hasOwnProperty(key)) {
+        var newListItem = document.createElement("LI");
+        newList.appendChild(newListItem);
+        var newListTag = document.createElement("a");
+        newListTag.setAttribute('choice_pk', key);
+        newListTag.setAttribute('class', 'some-odd-class');
+        var newListText = document.createTextNode(response[key]['choice_text']);
+        newListTag.appendChild(newListText);
+        newListItem.appendChild(newListTag);
+      }
+  }
   }
   for (i = 0; i < pollsItemList.length; i++) {
     listenerAdd(pollsItemList[i]);
