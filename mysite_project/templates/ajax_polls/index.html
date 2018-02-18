@@ -34,18 +34,21 @@
 <script type="text/javascript">
   var pollsItemList = document.getElementsByClassName("ajax-polls-item");
   var whole_url = "{% url 'ajax_polls:ajax_polls' %}";
+  var loadedSet = new Set();
   listenerAdd = function (element) {
     element.addEventListener('click', function() {
-      new $.ajax({
+      if (loadedSet.has(element)) return;
+      $.ajax({
         url: whole_url,
         method: 'GET',
         data: {'question_pk': element['name'], },
         success: function(response) {
           console.log(response);
           addChild(element, response);
+          loadedSet.add(element);
         }
-      });      
-    });
+      })    
+    })
   }
   addChild = function (element, response) {
     var newList = document.createElement("UL");
