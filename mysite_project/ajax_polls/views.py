@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from django.core import serializers
+from django.http import JsonResponse
 
 from .models import Question, Choice
 
@@ -46,10 +47,16 @@ def vote(request, question_id):
 
 
 class AjaxDetails(generic.TemplateView):
-    template_name = "base.html"
+    template_name = 'ajax_polls/index.html'
     model = Question
-    print('hi')
 
     def get(self, request, *args, **kwargs):
-        print(request.GET['question_pk'])
-        return HttpResponse('hi', content_type='application/json')
+        print(request.GET)
+        question_pk = request.GET['question_pk']
+        question = get_object_or_404(Question, pk=question_pk)
+        print(question)
+        data = {queryresponse.pk: {'choice_pk': queryresponse.pk,
+                'choice_text': queryresponse.choice_text}
+                for queryresponse in Choice.objects.filter(question_id=question_pk)}
+        print(data)
+        return JsonResponse(data)

@@ -32,22 +32,24 @@
 
 {% block js %}
 <script type="text/javascript">
-  var $pollsItemList = document.getElementsByClassName("ajax-polls-item");
-  console.log($pollsItemList);
-  var $whole_url = "{% url 'ajax_polls:ajax_polls' %}";
-
-  for ($i = 0; $i < $pollsItemList.length; $i++) {
-    $pollsItemList[$i].addEventListener("mouseover", function() {
+  var pollsItemList = document.getElementsByClassName("ajax-polls-item");
+  var whole_url = "{% url 'ajax_polls:ajax_polls' %}";
+  listenerAdd = function (element) {
+    element.addEventListener('click', function() {
       new $.ajax({
-        url: $whole_url,
+        url: whole_url,
         method: 'GET',
-        data: {'question_pk': $i, },
-        onSuccess: function(dropDowns) {
+        data: {'question_pk': element['name'], },
+        success: function(response) {
           console.log('it came back');
+          console.log(response);
         }
-      })
-    })
+      });      
+    });
   }
-
+  for (i = 0; i < pollsItemList.length; i++) {
+    listenerAdd(pollsItemList[i]);
+    console.log(pollsItemList[i]);
+  }
 </script>
 {% endblock js %}
