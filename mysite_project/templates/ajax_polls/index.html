@@ -33,7 +33,6 @@
 {% block js %}
 <script type="text/javascript">
   var pollsItemList = document.getElementsByClassName("ajax-polls-item");
-  var whole_url = "{% url 'ajax_polls:ajax_polls' %}";
   var loadedSet = new Set();
   listenerAdd = function (element) {
     element.addEventListener('click', function() {
@@ -42,17 +41,26 @@
         loadedSet.delete(element);
         return;
       }
-      $.ajax({
-        url: whole_url,
-        method: 'GET',
-        data: {'question_pk': element['name'], },
-        success: function(response) {
-          console.log(response);
-          addChild(element, response);
-          loadedSet.add(element);
-        }
-      })    
+      else {
+        addChidren(element);
+
+
+      }
     })
+  }
+  addChidren = function(element) {
+    var whole_url = "{% url 'ajax_polls:ajax_polls' %}";
+    $.ajax({
+      url: whole_url,
+      method: 'GET',
+      data: {'question_pk': element['name'], },
+      success: function(response) {
+        console.log(response);
+        addChild(element, response);
+        loadedSet.add(element);
+        return true;
+      }
+    }) 
   }
   addChild = function (element, response) {
     var newList = document.createElement("UL");
@@ -64,8 +72,7 @@
         var newListTag = document.createElement("a");
         newListTag.setAttribute('choice_pk', key);
         newListTag.setAttribute('class', 'some-odd-class');
-        var newListText = document.createTextNode(response[key]['choice_text']);
-        newListTag.appendChild(newListText);
+        newListTag.textContent = response[key]['choice_text'];
         newListItem.appendChild(newListTag);
       }
     }
