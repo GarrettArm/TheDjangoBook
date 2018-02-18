@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Polls{% endblock title %}
-{% block header %}Poll Options{% endblock header %}
+{% block title %}Ajax Polls{% endblock title %}
+{% block header %}Ajax Polls{% endblock header %}
 
 {% block loadjs %}
     {{ block.super }}
@@ -67,11 +67,18 @@
     element.appendChild(newList);
     for (var key in response) {
       if (response.hasOwnProperty(key)) {
-        var newListItem = document.createElement("LI");
+        var newListItem = document.createElement("li");
+        newListItem.setAttribute('class', 'list-group-item');
         newList.appendChild(newListItem);
-        var newListTag = document.createElement("a");
-        newListTag.setAttribute('choice_pk', key);
-        newListTag.setAttribute('class', 'some-odd-class');
+        var newListRadio = document.createElement('input');
+        newListRadio.setAttribute('type', 'radio');
+        newListRadio.setAttribute('name', 'choice');
+        newListRadio.setAttribute('id', response[key]['choice_pk']);
+        newListRadio.setAttribute('value', response[key]['choice_pk']);
+        newListItem.appendChild(newListRadio);
+        var newListTag = document.createElement("label");
+        newListTag.setAttribute('for', response[key]['choice_pk']);
+        newListTag.setAttribute('class', 'choice-item');
         newListTag.textContent = response[key]['choice_text'];
         newListItem.appendChild(newListTag);
       }
