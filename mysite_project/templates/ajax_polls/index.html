@@ -37,7 +37,11 @@
   var loadedSet = new Set();
   listenerAdd = function (element) {
     element.addEventListener('click', function() {
-      if (loadedSet.has(element)) return;
+      if (loadedSet.has(element)) {
+        removeChildren(element);
+        loadedSet.delete(element);
+        return;
+      }
       $.ajax({
         url: whole_url,
         method: 'GET',
@@ -64,7 +68,11 @@
         newListTag.appendChild(newListText);
         newListItem.appendChild(newListTag);
       }
+    }
   }
+  removeChildren = function(element) {
+    element.children[0].remove();
+
   }
   for (i = 0; i < pollsItemList.length; i++) {
     listenerAdd(pollsItemList[i]);
