@@ -111,8 +111,7 @@
     var newListTag = document.createElement("label");
     newListTag.textContent = response[key]['choice_text'];
     newListItem.appendChild(newListTag);
-}
-
+  }
   addChild = function (element, response) {
     var newList = document.createElement('ul');
     var newListAttrs = {'class': 'list-group',
@@ -137,8 +136,7 @@
         addBadge(element.getElementsByTagName('label')[0], response);
        }
       })
-      }
-
+  }
   addBadge = function (element, response) {
     var badge = document.createElement('span');
     badgeAttrs = {'class': 'badge badge-secondary',
@@ -151,7 +149,6 @@
     }
     element.appendChild(badge);
   }
-
   removeChildren = function (element) {
     formNodes = element.parentNode.getElementsByTagName('form')[0].remove();
   }
@@ -160,7 +157,6 @@
       element.setAttribute(key, attrs[key]);
     }
   }
-
   for (i = 0; i < pollsItemList.length; i++) {
     listenerAdd(pollsItemList[i]);
   }
