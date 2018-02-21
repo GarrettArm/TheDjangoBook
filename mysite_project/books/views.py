@@ -1,34 +1,28 @@
 from django.shortcuts import render
-from books.models import Book
-# from django.template.loader import get_template
-# from django.http import HttpResponse, Http404
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
+
+from .forms import BookForm
+from .models import Book
 
 
-def search_form(request):
-    return render(request, 'books/search_form.html')
+class searchView(FormView):
+    template_name = 'books/book_search.html'
+    form_class = BookForm
+    success_url = reverse_lazy('books:class_search')
 
-
-def search(request):
-    try:
-        search_string = request.GET['q']
-    except KeyError:
-        return render(request, 'books/search_form.html', {'error': False})
-
-    # because request.GET will give an empty string, if the passed in variable is empty
-    if not search_string:
-        return render(request, 'books/search_form.html', {'error': True})
-
-    # verbose step-by-step of the magic render shortcut
-    books_queryset = Book.objects.filter(title__icontains=search_string)
-    # results_template = get_template('books/search_results.html')
-    # context = {'books': books_queryset, 'query': search_string}
-    # SafeText = results_template.render(context)
-    # return HttpResponse(SafeText)
-
-    # more and more succinct but more magic ways of saying this
-    # t = get_template('books/search_results.html')
-    # return render(request, t, context)
-
-    # most magic & succinct way
-    return render(request, 'books/search_results.html',
-                  {'books': books_queryset, 'query': search_string})
+    def get(self, request, *ags, **kwargs):
+        if not request.GET:
+            form = self.form_class()
+            response = render(request, self.template_name, {'form': form})
+            return response
+        form = self.form_class(request.GET)
+        if form.is_valid():
+            query = form['title'].value()
+            books_queryset = Book.objects.filter(title__icontains=query)
+            response = render(request, self.template_name, {'form': form, 'books': books_queryset, 'query': query, })
+            return response
+        else:
+            form = self.form_class()
+            response = render(request, self.template_name, {'form': form})
+            return response

@@ -1,9 +1,7 @@
-from django.conf.urls import url
+from django.urls import path
 from books import views
-
 
 app_name = 'books'
 urlpatterns = [
-    url(r'search-form/$', views.search_form, name='search_form_page'),
-    url(r'search/$', views.search),
+    path('', views.searchView.as_view(), name='search'),
 ]
