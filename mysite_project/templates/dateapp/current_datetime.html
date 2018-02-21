@@ -5,5 +5,10 @@
 {% block header %}Current time now{% endblock header %}
 
 {% block content %}
-    <p>It is now {{ current_datestuff }}.</p>
+<div>
+<blockquote class="blockquote blockquote-reverse">
+    <p class="mb-0">It is now {{ current_datestuff }}.</p>
+    <footer class="blockquote-footer">datetime.datetime.now()</footer>
+</blockquote>
+</div>    
 {% endblock content %}
