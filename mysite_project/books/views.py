@@ -19,7 +19,10 @@ class searchView(FormView):
         form = self.form_class(request.GET)
         if form.is_valid():
             query = form['title'].value()
-            books_queryset = Book.objects.filter(title__icontains=query)
+            try:
+                books_queryset = Book.objects.filter(title__icontains=query)
+            except Book.DoesNotExist:
+                books_queryset = None
             response = render(request, self.template_name, {'form': form, 'books': books_queryset, 'query': query, })
             return response
         else:
