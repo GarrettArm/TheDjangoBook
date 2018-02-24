@@ -7,7 +7,7 @@
       {% block title %}Base Title{% endblock title %}
     </title>
 
-    <!-- {% block styles %} -->
+    {% block styles %}
       <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
       <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/style.css' %}" />
       <link rel="icon" href="{% static 'mysite/favicon.png' %}" sizes="48x48" />
@@ -18,7 +18,7 @@
     {% endblock loadjs %}
 
   </head>
-  
+
   <div id="navbar" class="center">
     <nav class="navbar navbar-default navbar-color">
       <div class="container">
