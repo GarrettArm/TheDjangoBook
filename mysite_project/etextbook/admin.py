@@ -20,5 +20,4 @@ class DocumentAdmin(admin.ModelAdmin):
         response = format_html("""<a href="{}">{}</a>""", url, url)
         return response
 
-
 admin.site.register(Document, DocumentAdmin)

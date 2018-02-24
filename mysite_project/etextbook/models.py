@@ -7,7 +7,7 @@ class Document(models.Model):
     uploaded_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.description[:20] or self.id
+        return self.description[:20] or str(self.id)
 
     def help_text(self):
         return """each uploaded files is saved at /var/www/django/media/ and is accessible through the admin panel"""
