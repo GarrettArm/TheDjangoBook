@@ -10,4 +10,4 @@ class Document(models.Model):
         return self.description[:20] or self.id
 
     def help_text(self):
-        return """each uploaded files is saved at /uploaded_spreadsheets/ and is accessible through the admin panel"""
+        return """each uploaded files is saved at /var/www/django/media/ and is accessible through the admin panel"""
