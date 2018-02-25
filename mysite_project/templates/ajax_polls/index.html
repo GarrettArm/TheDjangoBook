@@ -109,7 +109,7 @@
       postChoice(newListItem);
     });
     var newListTag = document.createElement("label");
-    newListTag.textContent = response[key]['choice_text'];
+    newListTag.textContent = response[key]['choice_text'] + ' ';
     newListItem.appendChild(newListTag);
   }
   addChild = function (element, response) {
@@ -139,7 +139,7 @@
   }
   addBadge = function (element, response) {
     var badge = document.createElement('span');
-    badgeAttrs = {'class': 'badge badge-secondary',
+    badgeAttrs = {'class': 'badge badge-info',
     }
     badge.textContent = response['count'];
     setAttributes(badge, badgeAttrs);
@@ -150,6 +150,7 @@
     element.appendChild(badge);
   }
   removeChildren = function (element) {
+    console.log(elememt);
     formNodes = element.parentNode.getElementsByTagName('form')[0].remove();
   }
   setAttributes = function (element, attrs) {

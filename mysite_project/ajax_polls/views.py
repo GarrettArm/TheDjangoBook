@@ -19,17 +19,17 @@ class AjaxDetails(generic.TemplateView):
     def get(self, request, *args, **kwargs):
         if request.GET['function'] == 'pull_choices':
             question_pk = request.GET['question_pk']
-            data = {queryresponse.pk: {'choice_pk': queryresponse.pk,
+            payload = {queryresponse.pk: {'choice_pk': queryresponse.pk,
                     'choice_text': queryresponse.choice_text}
                     for queryresponse in Choice.objects.filter(question_id=question_pk)}
-            return JsonResponse(data)
+            return JsonResponse(payload)
 
     def post(self, request, *args, **kwargs):
         choice_pk = request.POST['choice_pk']
         question_pk = request.POST['question_pk']
         count = ajax_vote(question_pk, choice_pk)
-        data = {'hi': 'hello', 'bye': 'goodbye', 'count': count}
-        return JsonResponse(data)
+        payload = {'count': count, }
+        return JsonResponse(payload)
 
 
 def ajax_vote(question_pk, choice_pk):
