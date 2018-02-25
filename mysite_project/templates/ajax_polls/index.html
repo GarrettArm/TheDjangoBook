@@ -48,7 +48,7 @@
         }
     }
     return cookieValue;
-  } 
+  }
   var csrftoken = getCookie('csrftoken');
 
   function csrfSafeMethod(method) {
@@ -94,12 +94,12 @@
         loadedSet.add(element);
         return true;
       }
-    }) 
+    })
   }
   addChoiceItem = function (element, response, key) {
     var newListItem = document.createElement("li");
     newListItemAttrs = {'id': response[key]['choice_pk'],
-      'class': 'choice_item',
+      'class': 'choice_item list-group-item',
       'text': response[key]['choice_text'],
       'question_pk': element.getAttribute('question_pk'),
     }
