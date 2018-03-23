@@ -1,7 +1,7 @@
 from django.urls import path, include
 from django.contrib import admin
 from django.contrib.auth.views import login, logout
-# import debug_toolbar
+from django.conf import settings
 
 from . import views
 
@@ -21,4 +21,9 @@ urlpatterns = [
 
 ]
 
-# urlpatterns = [path('__debug__', include(debug_toolbar.urls)), ] + urlpatterns
+if settings.DEBUG:
+    import debug_toolbar
+    urlpatterns = [
+    path('__debug__', include(debug_toolbar.urls))
+    ] + urlpatterns
+    print(urlpatterns)
