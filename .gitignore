@@ -1,7 +1,8 @@
 mysite_project/uploaded_spreadsheets/
 mysite_project/uploads
 
-db.sqlite3
+prod.sqlite3
+dev.sqlite3
 **/migrations/
 
 # Byte-compiled / optimized / DLL files

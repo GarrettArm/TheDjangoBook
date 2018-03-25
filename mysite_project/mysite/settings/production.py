@@ -9,6 +9,13 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = '/var/www/django/static'
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'prod.sqlite3'),
+    }
+}
+
 MEDIA_ROOT = '/var/www/django/media'
 MEDIA_URL = '/media/'
 
