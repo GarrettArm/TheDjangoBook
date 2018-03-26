@@ -1,29 +1,20 @@
 * {
-  font-family: 'Cormorant-Bold', serif;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 60px;
-  line-height: 60px;
-  background-color: #701607;
+  font-family: 'Nunito', sans-serif;
 }
 
 .breadcrumb-item-active {
-    color: #d1cfca;
+    color: #754c4c;
 }
 .navbar {
-  background-color: #633b0a;
+  background-color: #b3c4d1;
 }
 body {
-  background-color: #bfc4bc;
+  background-color: #ededed;
 }
 
 .sidebar-header {
   margin-top: 20px;
-  color: Brown;
+  color: #754c4c;
 }
 
 .sidebar-nav {
@@ -33,5 +24,5 @@ body {
 }
 
 .sidebar-item {
-  color: blue;
+  color: #775f5f;
 }

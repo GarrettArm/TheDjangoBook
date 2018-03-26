@@ -2,8 +2,6 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-SECRET_KEY = '386$!xv=xbqfw42#!#a*1zq+wo5^u(_v=y_%-myi&(yb)06pd_'
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -14,8 +12,6 @@ INSTALLED_APPS = [
     'books.apps.BooksConfig',
     'etextbook.apps.EtextbookConfig',
     'polls.apps.PollsConfig',
-    'channels',
-    'chatroom.apps.ChatConfig',
     'contact.apps.ContactConfig',
     'ajax_polls.apps.AjaxPollsConfig',
 ]

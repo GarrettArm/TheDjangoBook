@@ -8,10 +8,11 @@
     </title>
 
     {% block styles %}
+      <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
       <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/style.css' %}" />
       <link rel="icon" href="{% static 'mysite/favicon.png' %}" sizes="48x48" />
-      <link href="https://fonts.googleapis.com/css?family=Cormorant" rel="stylesheet">
+
     {% endblock styles %}
 
     {% block loadjs %}
@@ -21,11 +22,11 @@
 
   <div id="navbar" class="center">
     <nav class="navbar navbar-default navbar-color">
-      <div class="container">
+      <div class="container-fluid">
         <div class="col-sm-2">
         </div>
         <div class="col-sm-8">
-          <h1 class=breadcrumb-item-active>{% block header %}Base Header{% endblock header %}</h1>
+          <h1 class="breadcrumb-item-active text-left">{% block header %}Base Header{% endblock header %}</h1>
         </div>
         <div class="col-sm-2">
           {% if user.is_authenticated %}
@@ -51,7 +52,6 @@
           <li><a href="{% url 'polls:index' %}" class="sidebar-item">Take a Poll</a></li>
           <li><a href="{% url 'books:search' %}" class="sidebar-item">Search for a Book</a></li>
           <li><a href="{% url 'etextbook:upload' %}" class="sidebar-item">Repair eTextbook csv</a></li>
-          <li><a href="{% url 'chatroom:lobby' %}" class="sidebar-item">Chat with someone</a></li>
           <li><a href="{% url 'contact:contact' %}" class="sidebar-item">Contact Us</a></li>
           <li><a href="{% url 'ajax_polls:index' %}" class="sidebar-item">Polls w Ajax</a></li>
           {% if user.is_authenticated %}

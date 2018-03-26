@@ -16,7 +16,6 @@ urlpatterns = [
     path('etextbook/', include('etextbook.urls'), name='etextbook'),
     path('polls/', include('polls.urls'), name='polls'),
     path('ajax_polls/', include('ajax_polls.urls'), name='ajax_polls'),
-    path('chat/', include('chatroom.urls'), name='chatroom'),
     path('', views.FrontView.as_view(), name='frontpage'),
 
 ]
