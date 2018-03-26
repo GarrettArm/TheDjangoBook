@@ -1,6 +1,6 @@
 from .base import *
 
-with open('~/django_secret_key.txt', 'w') as f:
+with open('../../django_secret_key.txt', 'r') as f:
     SECRET_KEY = f.read().strip()
 
 DEBUG = False
