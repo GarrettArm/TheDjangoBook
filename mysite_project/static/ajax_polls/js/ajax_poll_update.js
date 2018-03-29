@@ -68,7 +68,7 @@ addChild = function (element, response) {
 addChoiceItem = function (element, response, key) {
   var newListItem = document.createElement("li");
   newListItemAttrs = {'id': response[key]['choice_pk'],
-    'class': 'choice_item list-group-item',
+    'class': 'choice-item list-group-item',
     'text': response[key]['choice_text'],
     'question_pk': element.getAttribute('question_pk'),
   }
@@ -78,7 +78,7 @@ addChoiceItem = function (element, response, key) {
     postChoice(newListItem);
   });
   var newListTag = document.createElement("label");
-  newListTag.textContent = response[key]['choice_text'] + ' ';
+  newListTag.textContent = response[key]['choice_text'];
   newListItem.appendChild(newListTag);
 }
 
