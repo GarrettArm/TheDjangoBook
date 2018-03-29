@@ -20,28 +20,23 @@
 
   </head>
 
-  <div id="navbar" class="center">
-    <nav class="navbar navbar-default navbar-color">
-      <div class="container-fluid">
-        <div class="col-sm-2">
-        </div>
-        <div class="col-sm-8">
+  <div id="navbar" class="center navbar navbar-default navbar-color container-fluid no-gutters">
+        <div class="col-12 col-xl-2 col-lg-2 col-md-3 col-sm-4"></div>
+        <div class="col">
           <h1 class="breadcrumb-item-active text-left">{% block header %}Base Header{% endblock header %}</h1>
         </div>
-        <div class="col-sm-2">
+        <div class="col-auto">
           {% if user.is_authenticated %}
             <a href="/accounts/logout/" class="btn btn-info btn-sm" role="button">Logout {{ user.username }}</a>
           {% else %}
             <a href="/accounts/login/" class="btn btn-info btn-sm" role="button">Login</a>
           {% endif %}
         </div>
-      </div>
-    </nav>
   </div>
 
   <div class="container-fluid">
-    <div class="row">
-      <div class="col-sm-2">
+    <div class="row no-gutters">
+      <div class="col-12 col-xl-2 col-lg-2 col-md-3 col-sm-4">
         {% block sidebar %}
         <div class="sidebar-header">
           <h3>Links</h3>
@@ -61,7 +56,7 @@
         {% endblock sidebar %}
       </div>
 
-      <div class="col-sm-10">
+      <div class="col">
         {% block content %}
           <p>Base Block Content</p>
         {% endblock content %}
