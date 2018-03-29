@@ -5,8 +5,8 @@
 {% block header %}Ajax Polls{% endblock header %}
 
 {% block loadjs %}
-    {{ block.super }}
-    <script src="{% static 'ajax_polls/js/jquery-3.3.1.min.js' %}" type="text/javascript"></script>
+  {{ block.super }}
+  <script src="{% static 'ajax_polls/js/jquery-3.3.1.min.js' %}" type="text/javascript"></script>
 {% endblock loadjs %}
 
 {% block styles %}
@@ -20,8 +20,8 @@
       <ul class="list-group">
         {% for question in latest_question_list %}
           <li class="list-group-item">
-            <div class="holder">
-              <a name="{{ question.id }}" class="ajax-polls-item">{{ question.question_text }} </a>
+            <div class="holder" ajax-function-url="{% url 'ajax_polls:ajax_polls' %}">
+              <a name="{{ question.id }}" class="ajax-polls-item">{{ question.question_text }}</a>
             </div>
           </li>
         {% endfor %}
@@ -33,133 +33,6 @@
 {% endblock content %}
 
 {% block js %}
-<script type="text/javascript">
-  function getCookie(name) {
-    var cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        var cookies = document.cookie.split(';');
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = jQuery.trim(cookies[i]);
-            // Does this cookie string begin with the name we want?
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-  }
-  var csrftoken = getCookie('csrftoken');
-
-  function csrfSafeMethod(method) {
-      // these HTTP methods do not require CSRF protection
-      return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
-  }
-  $.ajaxSetup({
-      beforeSend: function(xhr, settings) {
-          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
-              xhr.setRequestHeader("X-CSRFToken", csrftoken);
-          }
-      }
-  });
-
-  var pollsItemList = document.getElementsByClassName("ajax-polls-item");
-  var loadedSet = new Set();
-  listenerAdd = function (element) {
-    element.addEventListener('click', function () {
-      if (loadedSet.has(element)) {
-        removeChildren(element);
-        loadedSet.delete(element);
-        return;
-      }
-      else {
-        addChidren(element);
-      }
-    })
-  }
-  addChidren = function (element) {
-    var whole_url = "{% url 'ajax_polls:ajax_polls' %}";
-    var parent = element.parentElement;
-    var textSibling = parent.getElementsByClassName("ajax-polls-item")[0];
-    $.ajax({
-      url: whole_url,
-      method: 'GET',
-      data: {'question_pk': element['name'], 'function': 'pull_choices', },
-      success: function(response) {
-        var choiceElement = document.createElement('div');
-        var choiceElementAttrs = {'question_pk': textSibling['name'], };
-        setAttributes(choiceElement, choiceElementAttrs);
-        parent.appendChild(choiceElement);
-        addChild(choiceElement, response);
-        loadedSet.add(element);
-        return true;
-      }
-    })
-  }
-  addChoiceItem = function (element, response, key) {
-    var newListItem = document.createElement("li");
-    newListItemAttrs = {'id': response[key]['choice_pk'],
-      'class': 'choice_item list-group-item',
-      'text': response[key]['choice_text'],
-      'question_pk': element.getAttribute('question_pk'),
-    }
-    setAttributes(newListItem, newListItemAttrs);
-    element.appendChild(newListItem);
-    newListItem.addEventListener('click', function (){
-      postChoice(newListItem);
-    });
-    var newListTag = document.createElement("label");
-    newListTag.textContent = response[key]['choice_text'] + ' ';
-    newListItem.appendChild(newListTag);
-  }
-  addChild = function (element, response) {
-    var newList = document.createElement('ul');
-    var newListAttrs = {'class': 'list-group',
-      'question_pk': element.getAttribute('question_pk'),
-    }
-    setAttributes(newList, newListAttrs);
-    element.appendChild(newList);
-    for (var key in response) {
-      if (response.hasOwnProperty(key)) {
-        addChoiceItem(newList, response, key);
-      }
-    }
-  }
-  postChoice = function (element) {
-    var choice_url = "{% url 'ajax_polls:ajax_polls' %}";
-    $.ajax({
-      url: choice_url,
-      method: 'POST',
-      data: {'choice_pk': element['id'], 'question_pk': element.getAttribute('question_pk'), },
-      csrfmiddlewaretoken: '{{ csrf_token }}',
-      success: function (response) {
-        addBadge(element.getElementsByTagName('label')[0], response);
-       }
-      })
-  }
-  addBadge = function (element, response) {
-    var badge = document.createElement('span');
-    badgeAttrs = {'class': 'badge badge-info',
-    }
-    badge.textContent = response['count'];
-    setAttributes(badge, badgeAttrs);
-    previous_badges = element.getElementsByTagName('span')
-    while (previous_badges.length) {
-      previous_badges[0].remove();
-    }
-    element.appendChild(badge);
-  }
-  removeChildren = function (element) {
-    console.log(elememt);
-    formNodes = element.parentNode.getElementsByTagName('form')[0].remove();
-  }
-  setAttributes = function (element, attrs) {
-    for (var key in attrs) {
-      element.setAttribute(key, attrs[key]);
-    }
-  }
-  for (i = 0; i < pollsItemList.length; i++) {
-    listenerAdd(pollsItemList[i]);
-  }
-</script>
+  {{ block.super }}
+  <script src="{% static 'ajax_polls/js/ajax_poll_update.js' %}" type="text/javascript"></script>
 {% endblock js %}
