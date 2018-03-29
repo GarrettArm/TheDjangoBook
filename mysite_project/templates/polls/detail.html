@@ -10,6 +10,14 @@
 {% endblock styles %}
 
 {% block content %}
+  <nav aria-label='breadcrumb'>
+    <ol class='breadcrumb'>
+      <li class='breadcrumb-item'>
+        <a href='{{ polls_index_url }}'>Polls Index</a>
+      </li>
+      <li class='breadcrumb-item active' aria-current='page'>Poll Detail</li>
+    </ol>
+  </nav>
   <h1 class="polls-item">{{ question.question_text }}</h1>
   {% if error_message %}
     <p><strong>{{ error_message }}</strong></p>
@@ -19,7 +27,7 @@
     <ul class="list-group">
       {% for choice in question.choice_set.all %}
         <li class="list-group-item">
-          <input type="radio" name="choice" id={"choice{{ forloop.counter }}" value="{{ choice.id }}"} />
+          <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}"} />
           <label for="choice{{ forloop.counter }}" class="choice-item">{{ choice.choice_text }}</label>
         </li>
       {% endfor %}

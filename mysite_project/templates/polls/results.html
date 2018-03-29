@@ -11,6 +11,17 @@
 
 
 {% block content %}
+  <nav aria-label='breadcrumb'>
+    <ol class='breadcrumb'>
+      <li class='breadcrumb-item'>
+        <a href='{{ polls_index_url }}'>Polls Index</a>
+      </li>
+      <li class='breadcrumb-item'>
+        <a href='{{ polls_detail_url }}'>Poll Detail</a>
+      </li>
+      <li class='breadcrumb-item active' aria-current='page'>Poll Detail</li>
+    </ol>
+  </nav>
   <h3 class="polls-item"> {{ question.question_text }}</h3>
   <table class="table">
     <tr>

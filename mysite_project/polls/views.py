@@ -19,6 +19,11 @@ class DetailView(generic.DetailView):
     template_name = 'polls/detail.html'
     queryset = Question.objects.filter(pub_date__lte=timezone.now())
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        polls_index_url = reverse('polls:index')
+        context['polls_index_url'] = polls_index_url
+        return context
 
 class ResultsView(generic.DetailView):
     model = Question
@@ -26,8 +31,13 @@ class ResultsView(generic.DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        print(context['question'].id)
         kwargs_json = serializers.serialize('json', Choice.objects.all())
         context['kwargs_json'] = kwargs_json
+        polls_index_url = reverse('polls:index')
+        context['polls_index_url'] = polls_index_url
+        polls_detail_url = reverse('polls:detail', args=(context['question'].id, ))
+        context['polls_detail_url'] = polls_detail_url
         return context
 
 
