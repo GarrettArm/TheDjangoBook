@@ -37,7 +37,7 @@ def convert_csv(request):
     cleaned_filename = 'cleaned-{}'.format(request_file.name)
     response['Content-Disposition'] = 'attachment; filename={}'.format(cleaned_filename)
     writer = csv.writer(response,
-                        delimiter=',',
+                        delimiter='\t',
                         quotechar='"',
                         quoting=csv.QUOTE_ALL)
     for line in cleaned_csv_list:
