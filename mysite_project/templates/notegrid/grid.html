@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+{{ block.super }}
+<!-- <link rel="stylesheet" type="text/css" href="{% static 'notegrid/css/grid.css' %}" /> -->
+{% endblock styles %}
+
+
+{% block loadjs %}
+{{ block.super }}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="{% static 'notegrid/js/plotly-latest.min.js' %}"></script>
+{% endblock loadjs %}
+
+
+{% block content %}
+<!-- <script type="text/javascript" src="{% static '/notegrid/js/replaceMainBox.js' %}"></script> -->
+{% endblock content %}
+
+
+{% block js %}
+  {{ block.super }}
+  <script type='text/javascript' src="{% static 'notegrid/js/plotlyscatter.js' %}"></script>
+{% endblock js %}

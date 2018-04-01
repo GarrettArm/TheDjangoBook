@@ -34,9 +34,9 @@
         </div>
   </div>
 
-  <div class="container-fluid">
+  <div class="container-fluid" id="mainpage">
     <div class="row no-gutters">
-      <div class="col-12 col-xl-2 col-lg-2 col-md-3 col-sm-4">
+      <div class="col-12 col-xl-2 col-lg-2 col-md-3 col-sm-4" id="sidebar">
         {% block sidebar %}
         <div class="sidebar-header">
           <h3>Links</h3>
@@ -49,6 +49,7 @@
           <li><a href="{% url 'etextbook:upload' %}" class="sidebar-item">Repair eTextbook csv</a></li>
           <li><a href="{% url 'contact:contact' %}" class="sidebar-item">Contact Us</a></li>
           <li><a href="{% url 'ajax_polls:index' %}" class="sidebar-item">Polls w Ajax</a></li>
+          <li><a href="{% url 'notegrid:notegrid' %}" class="sidebar-item">NoteGrid</a></li>
           {% if user.is_authenticated %}
           <li><a href="{% url 'admin:index' %}" class="sidebar-item">Admin Panel</a></li>
           {% endif %}
@@ -56,7 +57,7 @@
         {% endblock sidebar %}
       </div>
 
-      <div class="col">
+      <div class="col" id="mainbox">
         {% block content %}
           <p>Base Block Content</p>
         {% endblock content %}

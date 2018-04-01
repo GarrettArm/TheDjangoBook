@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'polls.apps.PollsConfig',
     'contact.apps.ContactConfig',
     'ajax_polls.apps.AjaxPollsConfig',
+    'notegrid.apps.NotegridConfig',
 ]
 
 MIDDLEWARE = [
