@@ -5,7 +5,7 @@ with open('../../django_secret_key.txt', 'r') as f:
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['18.188.30.182', ]
+ALLOWED_HOSTS = ['18.188.30.182', 'gaularmstrong.com']
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
