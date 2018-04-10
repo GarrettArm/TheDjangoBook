@@ -4,6 +4,7 @@ mysite_project/uploads
 prod.sqlite3
 dev.sqlite3
 **/migrations/
+.vscode/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
