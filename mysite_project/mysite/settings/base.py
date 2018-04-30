@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'ajax_polls.apps.AjaxPollsConfig',
     'notegrid.apps.NotegridConfig',
+    'vue_test.apps.VueTestConfig',
 ]
 
 MIDDLEWARE = [
@@ -29,18 +30,6 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'mysite.urls'
 
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
-
-CHANNEL_LAYERS = {
-    "default": {
-        # This example app uses the Redis channel layer implementation asgi_redis
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [(redis_host, 6379)],
-        },
-        "ROUTING": "mysite.routing.channel_routing",
-    },
-}
 
 TEMPLATES = [
     {

@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Current timez{% endblock title %}
+
+{% block header %}Current timez now{% endblock header %}
+
+{% block loadjs %}
+  {{ block.super }}
+  <script src="{% static 'vue/js/vue.js' %}" type="text/javascript"></script>
+{% endblock loadjs %}
+
+{% block content %}
+<div id="app">
+    <p> [[ title ]] </p>
+    <ul>
+        <li v-for="count in {{ counters }}">
+            <h4>[[ count ]]</h4>
+        </li>
+    </ul>
+</div>
+<script>
+new Vue({
+  delimiters: ['[[', ']]'],
+  el: '#app',
+  data: {
+    title: 'This text',
+  }
+})
+</script>
+<div>
+<blockquote class="blockquote blockquote-reverse">
+    <p class="mb-0">It is now {{ current_datestuff }}.</p>
+    <footer class="blockquote-footer">datetime.datetime.now()</footer>
+</blockquote>
+</div>    
+{% endblock content %}
