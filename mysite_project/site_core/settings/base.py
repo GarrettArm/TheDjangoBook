@@ -27,20 +27,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'mysite.urls'
-
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
-
-CHANNEL_LAYERS = {
-    "default": {
-        # This example app uses the Redis channel layer implementation asgi_redis
-        "BACKEND": "asgi_redis.RedisChannelLayer",
-        "CONFIG": {
-            "hosts": [(redis_host, 6379)],
-        },
-        "ROUTING": "mysite.routing.channel_routing",
-    },
-}
+ROOT_URLCONF = 'site_core.urls'
 
 TEMPLATES = [
     {
@@ -59,7 +46,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'mysite.wsgi.application'
+WSGI_APPLICATION = 'site_core.wsgi.application'
 
 
 AUTH_PASSWORD_VALIDATORS = [

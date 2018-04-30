@@ -6,7 +6,7 @@ from selenium import webdriver
 
 class NewVisitorTest(unittest.TestCase):
     dev_url = 'http://127.0.0.1:8000'
-    prod_url = 'http://127.0.0.1:8088'
+    prod_url = 'https://gaularmstrong.com'
 
     def setUp(self):
         self.browser = webdriver.Firefox()

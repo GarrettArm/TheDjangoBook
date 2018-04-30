@@ -1,5 +1,7 @@
 mysite_project/uploaded_spreadsheets/
 mysite_project/uploads
+.pytest_cache/
+
 
 prod.sqlite3
 dev.sqlite3
