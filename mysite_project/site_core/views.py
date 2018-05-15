@@ -4,7 +4,7 @@ from django.views.generic import TemplateView
 
 
 class FrontView(TemplateView):
-    template_name = 'mysite/frontpage.html'
+    template_name = 'site_core/frontpage.html'
 
 
 class CurrentDateView(TemplateView):

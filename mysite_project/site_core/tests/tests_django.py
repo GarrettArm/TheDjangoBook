@@ -12,7 +12,7 @@ class LoginWorks(TestCase):
     def test_template_loads(self):
         response = self.client.get('/')
         template_names = [i.name for i in response.templates]
-        self.assertIn('mysite/frontpage.html', template_names)
+        self.assertIn('site_core/frontpage.html', template_names)
         self.assertIn('base.html', template_names)
         self.assertTemplateUsed(response, 'base.html')
 

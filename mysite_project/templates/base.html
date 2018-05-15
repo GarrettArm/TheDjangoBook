@@ -10,8 +10,8 @@
     {% block styles %}
       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
       <link rel="stylesheet" type="text/css" href="{% static 'bootstrap/css/bootstrap.min.css' %}" />
-      <link rel="stylesheet" type="text/css" href="{% static 'mysite/css/style.css' %}" />
-      <link rel="icon" href="{% static 'mysite/favicon.png' %}" sizes="48x48" />
+      <link rel="stylesheet" type="text/css" href="{% static 'site_core/css/style.css' %}" />
+      <link rel="icon" href="{% static 'site_core/favicon.png' %}" sizes="48x48" />
 
     {% endblock styles %}
 
@@ -50,6 +50,7 @@
           <li><a href="{% url 'contact:contact' %}" class="sidebar-item">Contact Us</a></li>
           <li><a href="{% url 'ajax_polls:index' %}" class="sidebar-item">Polls w Ajax</a></li>
           <li><a href="{% url 'notegrid:notegrid' %}" class="sidebar-item">NoteGrid</a></li>
+          <li><a href="{% url 'vue_test:index' %}" class="sidebar-item">Vue Test</a></li>
           {% if user.is_authenticated %}
           <li><a href="{% url 'admin:index' %}" class="sidebar-item">Admin Panel</a></li>
           {% endif %}
