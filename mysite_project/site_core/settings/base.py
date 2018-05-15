@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'ajax_polls.apps.AjaxPollsConfig',
     'notegrid.apps.NotegridConfig',
     'vue_test.apps.VueTestConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -49,6 +50,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'site_core.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     # {
