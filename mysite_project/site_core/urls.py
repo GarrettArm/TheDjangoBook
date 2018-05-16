@@ -18,6 +18,7 @@ urlpatterns = [
     path('ajax_polls/', include('ajax_polls.urls'), name='ajax_polls'),
     path('notegrid/', include('notegrid.urls'), name='notegrid'),
     path('vue_test/', include('vue_test.urls'), name='vue_test'),
+    path('api-auth/', include('rest_framework.urls')),
     path('', views.FrontView.as_view(), name='frontpage'),
 ]
 

@@ -4,21 +4,40 @@ from django.views.generic import TemplateView
 from rest_framework import viewsets, generics
 from .models import FuelEffeciency
 from .serializers import FuelEffeciencySerializer
+from .serializers import UserSerializer
+from django.contrib.auth.models import User
+from rest_framework import permissions
+from rest_framework.response import Response
 
 
 class FuelEffeciencyViewSet(viewsets.ModelViewSet):
     queryset = FuelEffeciency.objects.all()
     serializer_class = FuelEffeciencySerializer
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
 
 
 class ClassBasedView(generics.ListCreateAPIView):
     queryset = FuelEffeciency.objects.all()
     serializer_class = FuelEffeciencySerializer
+    permission_classes = (permissions.AllowAny, )
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class ClassBasedDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = FuelEffeciency.objects.all()
+    permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     serializer_class = FuelEffeciencySerializer
+
+
+class UserList(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+class UserDetail(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
 
 class TestView(TemplateView):
