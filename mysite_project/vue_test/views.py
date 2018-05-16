@@ -1,6 +1,24 @@
 import datetime
 
 from django.views.generic import TemplateView
+from rest_framework import viewsets, generics
+from .models import FuelEffeciency
+from .serializers import FuelEffeciencySerializer
+
+
+class FuelEffeciencyViewSet(viewsets.ModelViewSet):
+    queryset = FuelEffeciency.objects.all()
+    serializer_class = FuelEffeciencySerializer
+
+
+class ClassBasedView(generics.ListCreateAPIView):
+    queryset = FuelEffeciency.objects.all()
+    serializer_class = FuelEffeciencySerializer
+
+
+class ClassBasedDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = FuelEffeciency.objects.all()
+    serializer_class = FuelEffeciencySerializer
 
 
 class TestView(TemplateView):

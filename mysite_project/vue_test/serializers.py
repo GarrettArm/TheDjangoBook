@@ -4,4 +4,4 @@ from .models import FuelEffeciency
 class FuelEffeciencySerializer(serializers.ModelSerializer):
     class Meta:
         model = FuelEffeciency
-        fields = '__all__'
+        fields = ('miles_driven', 'gallons_used', 'date_measured', 'date_recorded')
