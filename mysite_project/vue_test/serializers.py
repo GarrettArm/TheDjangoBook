@@ -10,8 +10,8 @@ class FuelEffeciencySerializer(serializers.ModelSerializer):
         fields = ('miles_driven', 'gallons_used', 'date_measured', 'date_recorded', 'owner')
 
 
-class UserSerializer(serializers.ModelSerializer):
-    fuelefficiency = serializers.PrimaryKeyRelatedField(many=True, queryset=FuelEffeciency.objects.all())
-    class Meta:
-        model = User 
-        fields = ('id', 'username', 'fuelefficiency')
+# class UserSerializer(serializers.ModelSerializer):
+#     fuelefficiency = serializers.PrimaryKeyRelatedField(many=True, queryset=FuelEffeciency.objects.all())
+#     class Meta:
+#         model = User 
+#         fields = ('id', 'username', 'fuelefficiency')

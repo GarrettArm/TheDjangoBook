@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Current timez{% endblock title %}
+{% block title %}Vue DRF{% endblock title %}
 
-{% block header %}Current timez now{% endblock header %}
+{% block header %}Vue and Django Rest Framework{% endblock header %}
 
 {% block loadjs %}
   {{ block.super }}
@@ -18,6 +18,23 @@
         <li v-for="count in {{ counters }}">
             <h4>[[ count ]]</h4>
         </li>
+    </ul>
+    <ul>
+        <li><a href="{% url 'vue_test:index' %}" class="sidebar-item">Django Template with Vue Logic</a></li>
+        <li><a href="{% url 'vue_test:class_based_drf' %}" class="sidebar-item">Class Based DRF</a></li>
+        <ul>
+        {% for item_pk in db_pk %}
+        <li><a href="{% url 'vue_test:class_detail' item_pk %}" class="sidebar-item">Class Based Detail View DRF Item {{ item_pk }}</a></li>
+        {% endfor item_pk %}
+        </ul>
+        <li><a href="{% url 'vue_test:api-root' %}" class="side_bar_item">API Root</a></li>
+        <li><a href="{% url 'vue_test:fueleffeciency-list' %}" class="sidebar-item">API Routing</a></li>
+        <ul>
+        {% for item_pk in db_pk %}
+        <li><a href="{% url 'vue_test:fueleffeciency-detail' item_pk %}" class="sidebar-item">API Router Detail View DRF Item {{ item_pk }}</a></li>
+        {% endfor item_pk %}
+        </ul>
+        <li><a href="../api-auth/login/" class="sidebar-item">Authentication via DRM</a></li>
     </ul>
 </div>
 <script>
