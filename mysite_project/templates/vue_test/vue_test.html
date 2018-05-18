@@ -27,13 +27,25 @@
         <li><a href="{% url 'vue_test:class_detail' item_pk %}" class="sidebar-item">Class Based Detail View DRF Item {{ item_pk }}</a></li>
         {% endfor item_pk %}
         </ul>
-        <li><a href="{% url 'vue_test:api-root' %}" class="side_bar_item">API Root</a></li>
-        <li><a href="{% url 'vue_test:fueleffeciency-list' %}" class="sidebar-item">API Routing</a></li>
+        <li><a href="{% url 'vue_test:api-root' %}" class="side_bar_item">DRF API Root</a></li>
+        <li><a href="{% url 'vue_test:fueleffeciency-list' %}" class="sidebar-item">Fuel Effenciency Routing</a></li>
         <ul>
+        <table class=table>
+        <tr>
+          <th>Item</th>
+          <th>html view</th>
+          <th>xml view</th>
+          <th>json view</th>
+        </tr>
         {% for item_pk in db_pk %}
-        <li><a href="{% url 'vue_test:fueleffeciency-detail' item_pk %}" class="sidebar-item">API Router Detail View DRF Item {{ item_pk }}</a></li>
-        {% endfor item_pk %}
-        </ul>
+          <tr>
+            <td>{{ item_pk }}</td>
+            <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk %}" class="sidebar-item">html</a></td>
+            <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk 'xml' %}" class="sidebar-item">xml</a></td>
+            <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk 'json' %}" class="sidebar-item">json</a></td>
+          </tr>
+        {% endfor item_pk %}  
+        </table>
         <li><a href="../api-auth/login/" class="sidebar-item">Authentication via DRM</a></li>
     </ul>
 </div>

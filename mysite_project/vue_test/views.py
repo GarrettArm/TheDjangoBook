@@ -2,18 +2,19 @@ import datetime
 
 from django.views.generic import TemplateView
 from rest_framework import viewsets, generics
+from rest_framework import permissions
+from rest_framework.renderers import JSONRenderer, AdminRenderer
+from rest_framework_xml.renderers import XMLRenderer
+
 from .models import FuelEffeciency
 from .serializers import FuelEffeciencySerializer
-# from .serializers import UserSerializer
-from django.contrib.auth.models import User
-from rest_framework import permissions
-from rest_framework.response import Response
 
 
 class FuelEffeciencyViewSet(viewsets.ModelViewSet):
     queryset = FuelEffeciency.objects.all()
     serializer_class = FuelEffeciencySerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
+    renderer_classes = (AdminRenderer, XMLRenderer, JSONRenderer, )
 
 
 class ClassBasedView(generics.ListCreateAPIView):
@@ -31,16 +32,7 @@ class ClassBasedDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FuelEffeciencySerializer
 
 
-# class UserList(generics.ListAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
-
-# class UserDetail(generics.RetrieveAPIView):
-#     queryset = User.objects.all()
-#     serializer_class = UserSerializer
-
-
-class TestView(TemplateView):
+class BaseVueView(TemplateView):
     template_name = 'vue_test/vue_test.html'
 
     def get_context_data(self, **kwargs):
@@ -50,6 +42,5 @@ class TestView(TemplateView):
         counters = [1, 2, 3, 4]
         context['counters'] = counters
         db_pks = [i.id for i in FuelEffeciency.objects.all()]
-        print(db_pks)
         context['db_pk'] = db_pks
         return context
