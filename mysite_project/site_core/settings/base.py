@@ -15,6 +15,7 @@ INSTALLED_APPS = [
     'contact.apps.ContactConfig',
     'ajax_polls.apps.AjaxPollsConfig',
     'notegrid.apps.NotegridConfig',
+    'simple_vue.apps.SimpleVueConfig',
     'vue_test.apps.VueTestConfig',
     'rest_framework',
 ]

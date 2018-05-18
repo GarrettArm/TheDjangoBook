@@ -37,10 +37,6 @@ class BaseVueView(TemplateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        context['current_datestuff'] = current_time
-        counters = [1, 2, 3, 4]
-        context['counters'] = counters
         db_pks = [i.id for i in FuelEffeciency.objects.all()]
         context['db_pk'] = db_pks
         return context
