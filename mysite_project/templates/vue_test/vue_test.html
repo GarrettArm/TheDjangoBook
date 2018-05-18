@@ -13,69 +13,70 @@
 
 {% block content %}
 <div id="app">
-    <h3> [[ title ]] </h3>
-    <div class="container">
+  <div class="container">
     <div class="row">
-    <div class="col">
-    <ul>
-        <li v-for="count in {{ counters }}">
-            <h4>[[ count ]]</h4>
-        </li>
-    </ul>
-    </div>
-    </div>
-    </div>
-
-    <div class="container">
-    <div class="row">
-    <div class="col">
-    <ul>
-        <li><a href="{% url 'vue_test:class_based_drf' %}" class="sidebar-item">Class Based DRF</a></li>
+      <div class="col">
+        <h3> [[ title ]] </h3>
         <ul>
-        {% for item_pk in db_pk %}
-        <li><a href="{% url 'vue_test:class_detail' item_pk %}" class="sidebar-item">Class Based Detail View DRF Item {{ item_pk }}</a></li>
-        {% endfor item_pk %}
+          <li v-for="count in {{ counters }}">
+            <h6>Data passed into Vue from server: [[ count ]]</h6>
+          </li>
         </ul>
+      </div>
     </div>
-    </div>
-    </div>
-    <div class="container">
+  </div>
+
+  <div class="container">
     <div class="row">
-    <div class="col">
-        <li><a href="{% url 'vue_test:api-root' %}" class="side_bar_item">DRF API Root</a></li>
-        <li><a href="{% url 'vue_test:fueleffeciency-list' %}" class="sidebar-item">Fuel Effenciency Routing</a></li>
+      <div class="col">
         <ul>
-        <table class=table>
-        <tr>
-          <th>Item</th>
-          <th>html view</th>
-          <th>xml view</th>
-          <th>json view</th>
-        </tr>
-        {% for item_pk in db_pk %}
-          <tr>
-            <td>{{ item_pk }}</td>
-            <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk %}" class="sidebar-item">html</a></td>
-            <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk 'xml' %}" class="sidebar-item">xml</a></td>
-            <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk 'json' %}" class="sidebar-item">json</a></td>
-          </tr>
-        {% endfor item_pk %}  
-        </table>
-    </ul>
-    <li><a href="../api-auth/login/" class="sidebar-item">Authentication via DRF</a></li>
+          <li><a href="{% url 'vue_test:class_based_drf' %}" class="sidebar-item">Class Based DRF</a></li>
+          <ul>
+            {% for item_pk in db_pk %}
+              <li><a href="{% url 'vue_test:class_detail' item_pk %}" class="sidebar-item">Class Based Detail View DRF Item {{ item_pk }}</a></li>
+            {% endfor item_pk %}
+          </ul>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <ul>
+          <li><a href="{% url 'vue_test:api-root' %}" class="side_bar_item">DRF API Root</a></li>
+          <li><a href="{% url 'vue_test:fueleffeciency-list' %}" class="sidebar-item">Fuel Effenciency Routing</a></li>
+          <table class=table>
+            <tr>
+              <th>Item</th>
+              <th>html view</th>
+              <th>xml view</th>
+              <th>json view</th>
+            </tr>
+            {% for item_pk in db_pk %}
+              <tr>
+                <td>{{ item_pk }}</td>
+                <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk %}" class="sidebar-item">html</a></td>
+                <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk 'xml' %}" class="sidebar-item">xml</a></td>
+                <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk 'json' %}" class="sidebar-item">json</a></td>
+              </tr>
+            {% endfor item_pk %}  
+          </table>
+        </ul>
+        <li><a href="../api-auth/login/" class="sidebar-item">Authentication via DRF</a></li>
+      </div>
+    </div>
+  </div>
 </div>
-    </div>
-    </div>
-    </div>
     
 <script>
-new Vue({
-  delimiters: ['[[', ']]'],
-  el: '#app',
-  data: {
-    title: 'This text',
-  }
-})
+  new Vue({
+    delimiters: ['[[', ']]'],
+    el: '#app',
+    data: {
+      title: 'Vue variable text',
+    }
+  })
 </script>
- 
+
 {% endblock content %}
