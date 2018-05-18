@@ -3,7 +3,7 @@
 
 {% block title %}Vue DRF{% endblock title %}
 
-{% block header %}Vue and Django Rest Framework{% endblock header %}
+{% block header %}Vue and Django Rest Framework (DRF){% endblock header %}
 
 {% block loadjs %}
   {{ block.super }}
@@ -13,20 +13,35 @@
 
 {% block content %}
 <div id="app">
-    <p> [[ title ]] </p>
+    <h3> [[ title ]] </h3>
+    <div class="container">
+    <div class="row">
+    <div class="col">
     <ul>
         <li v-for="count in {{ counters }}">
             <h4>[[ count ]]</h4>
         </li>
     </ul>
+    </div>
+    </div>
+    </div>
+
+    <div class="container">
+    <div class="row">
+    <div class="col">
     <ul>
-        <li><a href="{% url 'vue_test:index' %}" class="sidebar-item">Django Template with Vue Logic</a></li>
         <li><a href="{% url 'vue_test:class_based_drf' %}" class="sidebar-item">Class Based DRF</a></li>
         <ul>
         {% for item_pk in db_pk %}
         <li><a href="{% url 'vue_test:class_detail' item_pk %}" class="sidebar-item">Class Based Detail View DRF Item {{ item_pk }}</a></li>
         {% endfor item_pk %}
         </ul>
+    </div>
+    </div>
+    </div>
+    <div class="container">
+    <div class="row">
+    <div class="col">
         <li><a href="{% url 'vue_test:api-root' %}" class="side_bar_item">DRF API Root</a></li>
         <li><a href="{% url 'vue_test:fueleffeciency-list' %}" class="sidebar-item">Fuel Effenciency Routing</a></li>
         <ul>
@@ -46,9 +61,13 @@
           </tr>
         {% endfor item_pk %}  
         </table>
-        <li><a href="../api-auth/login/" class="sidebar-item">Authentication via DRM</a></li>
     </ul>
+    <li><a href="../api-auth/login/" class="sidebar-item">Authentication via DRF</a></li>
 </div>
+    </div>
+    </div>
+    </div>
+    
 <script>
 new Vue({
   delimiters: ['[[', ']]'],
@@ -58,10 +77,5 @@ new Vue({
   }
 })
 </script>
-<div>
-<blockquote class="blockquote blockquote-reverse">
-    <p class="mb-0">It is now {{ current_datestuff }}.</p>
-    <footer class="blockquote-footer">datetime.datetime.now()</footer>
-</blockquote>
-</div>    
+ 
 {% endblock content %}
