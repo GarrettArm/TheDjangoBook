@@ -15,6 +15,8 @@ class FuelEffeciencyViewSet(viewsets.ModelViewSet):
     serializer_class = FuelEffeciencySerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     renderer_classes = (AdminRenderer, XMLRenderer, JSONRenderer, )
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
 
 
 class ClassBasedView(generics.ListCreateAPIView):
@@ -32,7 +34,7 @@ class ClassBasedDetailView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FuelEffeciencySerializer
 
 
-class BaseVueView(TemplateView):
+class BaseView(TemplateView):
     template_name = 'vue_test/vue_test.html'
 
     def get_context_data(self, **kwargs):

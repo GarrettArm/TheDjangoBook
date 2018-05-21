@@ -9,7 +9,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'books.apps.BooksConfig',
     'etextbook.apps.EtextbookConfig',
     'polls.apps.PollsConfig',
     'contact.apps.ContactConfig',

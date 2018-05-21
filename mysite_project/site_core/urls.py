@@ -11,7 +11,6 @@ urlpatterns = [
     path('accounts/login/', login),
     path('accounts/logout/', logout, {'next_page': '/'}),
     path('current_date_now/', views.CurrentDateView.as_view(), name='current_date'),
-    path('books/', include('books.urls'), name='books'),
     path('contact/', include('contact.urls'), name='contact'),
     path('etextbook/', include('etextbook.urls'), name='etextbook'),
     path('polls/', include('polls.urls'), name='polls'),

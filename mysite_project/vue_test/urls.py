@@ -8,5 +8,5 @@ urlpatterns = [
     path('api/', include(router.urls), name='api_router'),
     path('class-based/', views.ClassBasedView.as_view(), name='class_based_drf'),
     path('class-based-detail/<int:pk>', views.ClassBasedDetailView.as_view(), name='class_detail'),
-    path('', views.BaseVueView.as_view(), name='index'),
+    path('', views.BaseView.as_view(), name='index'),
 ]

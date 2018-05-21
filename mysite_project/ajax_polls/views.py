@@ -11,6 +11,14 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
     queryset = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        description = ["Remember the Polls app?  This page does the same task, but uses Ajax instead.",
+        "Ajax allows a webpage to send requests and accept responses without refreshing the entire page.",
+        "This page, for example, expands and collapses a question on click. It does this by sending a request to django (which then asks the MySQL database) for the question's choices.  On receiving the json response naming the choices, it creates a new display element for each choice.",
+        "Each choice element itself is similar to the question elements -- in that clicking on a choice item sends a request and receives/displays data from the MySQL database."   ]
+        context['description'] = description
+        return context
 
 class AjaxDetails(generic.TemplateView):
     template_name = 'ajax_polls/index.html'
