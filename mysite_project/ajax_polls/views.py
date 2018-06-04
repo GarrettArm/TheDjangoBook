@@ -13,10 +13,13 @@ class IndexView(generic.ListView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        description = ["Remember the Polls app?  This page does the same task, but uses Ajax instead.",
-        "Ajax allows a webpage to send requests and accept responses without refreshing the entire page.",
-        "This page, for example, expands and collapses a question on click. It does this by sending a request to django (which then asks the MySQL database) for the question's choices.  On receiving the json response naming the choices, it creates a new display element for each choice.",
-        "Each choice element itself is similar to the question elements -- in that clicking on a choice item sends a request and receives/displays data from the MySQL database."   ]
+        description = [
+            """Remember the Polls app?  This page does the same task, but uses Ajax instead.""",
+            """Ajax is a kind of javascript that allows a webpage to send requests and accept responses without refreshing the entire page.""",
+            """When you request the page at the url you see in your browser's location bar, Django does a plain vanilla html response.  The response has a bit of javascript, which attaches an ajax function to a click event.  Clicking a Question or Choice above activates that ajax function.""",
+            """Here is the interesting part of ajax:  Activating the ajax functions sends a request to a different url from the one in the browser location bar.  You wire up the ajax url to hit a separate function in the appserver, which processes the ajax request and returns the response as json directly back to the requesting ajax.""",
+            """""",
+        ]
         context['description'] = description
         return context
 

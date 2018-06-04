@@ -18,7 +18,7 @@ urlpatterns = [
     path('notegrid/', include('notegrid.urls'), name='notegrid'),
     path('simple_vue/', include('simple_vue.urls'), name='simple_vue'),
     path('vue_drf/', include('vue_test.urls'), name='vue_test'),
-    path('api-auth/', include('rest_framework.urls'), name='api_auth'),
+    path('api_auth/', include('rest_framework.urls'), name='api_auth'),
     path('', views.FrontView.as_view(), name='frontpage'),
 ]
 
