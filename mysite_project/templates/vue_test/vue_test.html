@@ -1,9 +1,9 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}Vue DRF{% endblock title %}
+{% block title %}DRF{% endblock title %}
 
-{% block header %}Vue and Django Rest Framework (DRF){% endblock header %}
+{% block header %}Django Rest Framework (DRF){% endblock header %}
 
 {% block loadjs %}
   {{ block.super }}
@@ -55,15 +55,5 @@
     </div>
   </div>
 </div>
-    
-<script>
-  new Vue({
-    delimiters: ['[[', ']]'],
-    el: '#app',
-    data: {
-      title: 'Vue variable text',
-    }
-  })
-</script>
 
 {% endblock content %}

@@ -41,4 +41,11 @@ class BaseView(TemplateView):
         context = super().get_context_data(**kwargs)
         db_pks = [i.id for i in FuelEffeciency.objects.all()]
         context['db_pk'] = db_pks
-        return context
+
+        description = ["""This is cooler than it seems.""",
+            """<a href=https://en.wikipedia.org/wiki/Representational_state_transfer>Rest frameworks</a> let you push data in and out of an appserver agnostic of the view.  An iPhone app, a Casio watch, and a Playstation4 can send and receive the same data from the server.  This page is just one view of the data, as html, xml, or json.  The display here is just to make it accessible to web browsers.""",
+            """The top list and the botton grid just use different wires to connect to the SQL.  I like the bottom grid myself.""",
+        ]
+        context['description'] = description
+
+        return context 

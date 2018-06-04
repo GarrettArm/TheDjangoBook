@@ -13,4 +13,8 @@ class SimpleVueView(TemplateView):
         context['current_datestuff'] = current_time
         counters = [1, 2, 3, 4]
         context['counters'] = counters
+        description = ["""This page is a proof of concept that one can create data on the app server, send it to be processed by Vue.js within a template.""",
+            """Nothing to See Here, Please Disperse...""",
+        ]
+        context['description'] = description
         return context

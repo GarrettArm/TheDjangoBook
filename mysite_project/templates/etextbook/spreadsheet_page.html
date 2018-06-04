@@ -8,11 +8,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'etextbook/css/style.css' %}" />
 {% endblock styles %}
 
-{% block header %}Upload Page{% endblock header %}
+{% block header %}Repair eTextbook csv{% endblock header %}
 
 {% block content %}
     <div class='container-fluid row no-gutters'>
-        <h3>Upload a malformed Bookstore spreadsheet, I will return a cleaned up version.</h3>
+        <h3>Let's repair a malformed Bookstore spreadsheet.</h3>
     </div>
     {{ form.errors }}
     {{ form.non_field_errors }}
