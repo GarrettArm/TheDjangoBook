@@ -13,6 +13,15 @@ class IndexView(generic.ListView):
     context_object_name = 'latest_question_list'
     queryset = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        description_text = [
+            """This is the "hello world" app of django tutorials: <a href="https://docs.djangoproject.com/en/2.0/intro/tutorial01/">Polls</a>.""",
+             """It is a three-page-deep app that teaches the basics of the django framework:  setting up and interacting with sql, user authentication, styling, routing, etc.""",
+            ]
+        context['description'] = description_text
+        return context
+
 
 class DetailView(generic.DetailView):
     model = Question
@@ -24,6 +33,7 @@ class DetailView(generic.DetailView):
         polls_index_url = reverse('polls:index')
         context['polls_index_url'] = polls_index_url
         return context
+
 
 class ResultsView(generic.DetailView):
     model = Question

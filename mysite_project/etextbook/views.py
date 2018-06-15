@@ -15,10 +15,6 @@ class SpreadsheetView(FormView):
     template_name = 'etextbook/spreadsheet_page.html'
     success_url = reverse_lazy('etextbook:upload')
 
-    def get(self, request, *args, **kwargs):
-        form = self.form_class()
-        return render(request, self.template_name, {'form': form})
-
     def post(self, request, *args, **kwargs):
         form = self.form_class(request.POST, request.FILES)
         if form.is_valid():
@@ -27,6 +23,15 @@ class SpreadsheetView(FormView):
             return response
         else:
             return render(request, self.template_name, {'form': form})
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        description = ["""This page was a successful experiment.  I had been responsible for running a script for a coworker each semester, and could not install python on her computer so that she could run the script herself.  To streamline the process, and make the functionality accessible, I folded the script into a webapp.""",
+        """You became familiar with models and forms from the Contact Us page.  This page extends that knowledge, to running scripts not included in the django framework.  We <a href=https://github.com/GarrettArm/TheDjangoBook/blob/master/mysite_project/etextbook/views.py>dropped down a level of abstraction</a> and replaced the default FormView reaction to Post requests.""",
+        """Following a valid Post request, the form is saved to database and a custom function "convert_csv()" is run - with the output file returned to the user as an http response.""",
+             ]
+        context['description'] = description
+        return context 
 
 
 def convert_csv(request):

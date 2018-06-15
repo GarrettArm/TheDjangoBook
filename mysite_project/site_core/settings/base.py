@@ -9,12 +9,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'books.apps.BooksConfig',
     'etextbook.apps.EtextbookConfig',
     'polls.apps.PollsConfig',
     'contact.apps.ContactConfig',
     'ajax_polls.apps.AjaxPollsConfig',
     'notegrid.apps.NotegridConfig',
+    'simple_vue.apps.SimpleVueConfig',
+    'vue_test.apps.VueTestConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -48,6 +50,11 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'site_core.wsgi.application'
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ]
+}
 
 AUTH_PASSWORD_VALIDATORS = [
     # {

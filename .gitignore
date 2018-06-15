@@ -1,6 +1,7 @@
 mysite_project/uploaded_spreadsheets/
 mysite_project/uploads
 .pytest_cache/
+mysite_project/static/sending_requests_to_django_rest_framework.ipynb
 
 
 prod.sqlite3
@@ -10,6 +11,7 @@ dev.sqlite3
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
+.pytest_cache/
 *.py[cod]
 *$py.class
 
@@ -109,3 +111,6 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# jupyter notebooks
+*.ipynb
