@@ -1,5 +1,5 @@
 
-Since splitting the settings file into dev & production versions:
+You must specify the settings file since splitting it into dev & production versions:
 
     specify the settings when running python manage, E.g., 
 
@@ -14,6 +14,4 @@ Since splitting the settings file into dev & production versions:
 
     run the tests 'python manage.py test polls --setting=mysite.settings.development'
 
-running 'gunicorn --workers 3 --bind unix:/tmp/mysite_project.sock mysite.wsgi' automatically does the production version through gunicorn & nginx, due to how wsgi.py is configured.
-
-running 'python manage.py runserver' will no run any version, as the setting must be specified.  It seems safer to me that way.
+You may prefer to run the production version, but it relies on nginx & gunicorn.  These require your configuration.  I recommend using the development settings.  Production settings only run on the live site.
