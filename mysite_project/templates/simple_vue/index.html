@@ -11,27 +11,27 @@
 {% endblock loadjs %}
 
 {% block content %}
-<div id="app">
-  <div class="container">
-    <div class="row">
-      <div class="col">
-        <h3> [[ title ]] </h3>
-        <ul>
-          <li v-for="count in {{ counters }}">
-            <h6>Data passed into Vue from server: [[ count ]]</h6>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
+<div id="app-1">
+  <div class="container" v-bind:title="message">
+    <h3 class="jumbotron"> [[ title ]]</h3>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h6>Data passed into Vue from server:</h6>
+      </li>
+      <li v-for="count in vue_counters" class="list-group-item">
+        <h6>[[ count ]]</h6>
+      </li>
+    </ul>
 </div>
     
 <script>
-  new Vue({
+  var app1 = new Vue({
     delimiters: ['[[', ']]'],
-    el: '#app',
+    el: '#app-1',
     data: {
+      vue_counters: {{ counters }},
       title: 'Vue variable text',
+      message: 'A Vue bound element.  Current time is: ' + new Date().toLocaleString()
     }
   })
 </script>
