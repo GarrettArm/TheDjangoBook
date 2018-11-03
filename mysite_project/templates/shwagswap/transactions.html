@@ -1,0 +1,50 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shwag Swap{% endblock title %}
+{% block header %}Find Shwag{% endblock header %}
+
+{% block styles %}
+  {{ block.super }}
+<!--   <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}" /> -->
+{% endblock styles %}
+
+{% block content %}
+  <div class='table-responsive'>
+    {% if transactions.exists %}
+      <table class='table'>
+      	<thead>
+      	  <th>Will Trade:</th>
+      	  <th>For Your:</th>
+      	</thead>
+      	<tbody>
+      	  {% for transaction in transactions %}
+      	    <tr>
+<!--       	      <td>{{ transaction.have_count }} {{ transaction.have_item.name }} <img src={{ transaction.have_item.photo_site }}></td> -->
+      	      <td>
+      	      	<p class="text-center">{{ transaction.have_count }}</p>
+      	      	<p class="text-center">{{ transaction.have_item.name }} {{ transaction.have_item.item_type }}</p>
+      	      	<img src="https://d15omoko64skxi.cloudfront.net/wp-content/uploads/2017/06/cc.large_.open_.graph_.png" alt="Have Item Image" class="img-thumbnail rounded mx-auto d-block h-50">
+      	      	<div class='text-center'>
+       	      	  <!-- <button type="button" class="btn btn-primary btn-sm">Contact this owner</button> -->
+       	      	  <a target='_blank' class='btn btn-primary btn-sm' href='{% url "shwag_swap:email_author" %}'>Contact this owner</a>
+       	      	</div>
+      	      </td>
+<!--               <td>{{ transaction.wanted_count }} {{ transaction.wanted_item.name }} <img src={{ transaction.wanted_item.photo_site }}></td> -->
+			  <td>
+			  	<p class="text-xs-center">{{ transaction.wanted_count }}</p>
+			  	<p class="text-xs-center">{{ transaction.wanted_item.name }} {{ transaction.wanted_item.item_type }}</p>
+			  	<img src="https://d15omoko64skxi.cloudfront.net/wp-content/uploads/2017/06/cc.large_.open_.graph_.png" alt="Wanted Item Image" class="img-thumbnail rounded mx-auto d-block h-50">
+			  </td>
+
+            </tr>
+
+          {% endfor %}
+      	</tbody>
+      </table>
+    {% else %}
+      <p class="empty">No one's posted any shwag yet.</p>
+    {% endif %}
+  </div>
+{% endblock content %}
