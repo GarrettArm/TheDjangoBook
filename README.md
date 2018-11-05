@@ -1,3 +1,5 @@
+git clone --recursive https://github.com/GarrettArm/DjangoSite
+
 
 You must specify the settings file since splitting it into dev & production versions:
 
