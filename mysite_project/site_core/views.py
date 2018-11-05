@@ -1,6 +1,11 @@
 import datetime
 
 from django.views.generic import TemplateView
+from django.contrib.auth.views import LoginView, LogoutView
+from django.views import generic
+from django.urls import reverse_lazy
+
+from .forms import CustomUserCreationForm
 
 
 class FrontView(TemplateView):
@@ -31,3 +36,17 @@ class CurrentDateView(TemplateView):
         """When the <a href=https://github.com/GarrettArm/TheDjangoBook/blob/master/mysite_project/templates/dateapp/current_datetime.html>template</a> gets handed the context and told to make some html, it puts the square peg into the square hole, etc, then sends the generated html to gunicorn as response html.""", ]
         context['description'] = description_text
         return context
+
+
+class MyLogoutView(LogoutView):
+    next_page = '/'
+
+
+class MyLoginView(LoginView):
+    pass
+
+
+class SignUpView(generic.CreateView):
+    form_class = CustomUserCreationForm
+    success_url = reverse_lazy('login')
+    template_name = 'site_core/signup.html'
