@@ -1,0 +1,3 @@
+[submodule "mysite_project/utilities/etextbookSearch"]
+	path = mysite_project/utilities/etextbookSearch
+	url = https://github.com/lsulibraries/etextbookSearch
