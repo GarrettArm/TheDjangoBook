@@ -5,8 +5,15 @@ services:
     image: postgres
   webapp:
     build: ./mysite_project
-    command: python /code/manage.py migrate --noinput --settings=site_core.settings.development
+    command: python3 manage.py makemigrations vue_test --settings=site_core.settings.development
+    command: python3 manage.py makemigrations polls --settings=site_core.settings.development
+    command: python3 manage.py makemigrations etextbook --settings=site_core.settings.development
+    command: python3 manage.py makemigrations contact --settings=site_core.settings.development
+    command: python3 manage.py makemigrations ajax_polls --settings=site_core.settings.development
+    command: python3 manage.py migrate --settings=site_core.settings.development
+    command: python3 manage.py createsuperuser --settings=site_core.settings.development
     command: python3 manage.py runserver 0.0.0.0:8000 --settings=site_core.settings.development
+    
     volumes:
       - ./mysite_project:/code/
     ports:
