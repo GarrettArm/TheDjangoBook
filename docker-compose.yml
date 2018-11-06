@@ -1,0 +1,15 @@
+version: '3'
+
+services:
+  db:
+    image: postgres
+  webapp:
+    build: ./mysite_project
+    command: python /code/manage.py migrate --noinput --settings=site_core.settings.development
+    command: python3 manage.py runserver 0.0.0.0:8000 --settings=site_core.settings.development
+    volumes:
+      - ./mysite_project:/code/
+    ports:
+      - 8000:8000
+    depends_on:
+      - db

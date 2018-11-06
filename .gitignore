@@ -1,8 +1,6 @@
 mysite_project/uploaded_spreadsheets/
 mysite_project/uploads
 .pytest_cache/
-mysite_project/static/sending_requests_to_django_rest_framework.ipynb
-
 
 prod.sqlite3
 dev.sqlite3
