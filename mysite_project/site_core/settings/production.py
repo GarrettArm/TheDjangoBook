@@ -15,8 +15,10 @@ STATIC_ROOT = '/var/www/django/static'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'philip',
-        'USER': 'philip',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'db',
+        'PORT': 5432,
     }
 }
 
