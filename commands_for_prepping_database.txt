@@ -11,3 +11,11 @@ docker-compose run webapp python3 manage.py makemigrations contact --settings=si
 docker-compose run webapp python3 manage.py makemigrations ajax_polls --settings=site_core.settings.development
 docker-compose run webapp python3 manage.py migrate --settings=site_core.settings.development
 docker-compose run webapp python3 manage.py createsuperuser --settings=site_core.settings.development
+
+
+To revise the code & have it stick:
+
+for a running docker-compose app & db & volumes:
+ - docker-compose down
+ - docker volume rm {app volume name}
+ - docker-compose up --build
