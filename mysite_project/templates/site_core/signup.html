@@ -1,0 +1,38 @@
+
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Sign Up{% endblock title %}
+
+{% block header %}Sign up :){% endblock header %}
+
+{% block content %}
+<div>
+  <form method='post'>
+    {% csrf_token %}
+    {% for field in form.visible_fields %}
+      <div class="form-group">
+        {{ field.label_tag }}
+        {% if field.is_bound %}
+          {% if field.errors %}
+            {% render_field field class="form-control is-invalid" %}
+            <div class='invalid-feedback'>
+              {{ error }}
+            </div>
+          {% else %}
+            {% render_field field class="form-control is-valid" %}
+          {% endif %}
+        {% else %}
+          {% render_field field class='form-control' %}
+        {% endif %}  
+        {% if field.help_text %}
+          <small class='form-text text-muted'>{{ field.help_text}}</small>
+        {% endif %}
+      </div>
+    {% endfor %}
+    <!-- {{ form.as_p }} -->
+    <!-- </div> -->
+    <button type='submit' class='btn btn-primary'>Sign up</button>
+  </form>
+</div>
+{% endblock content %}
