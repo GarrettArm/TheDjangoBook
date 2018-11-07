@@ -1,0 +1,13 @@
+git clone --recursive https://github.com/GarrettArm/DjangoSite
+cd DjangoSite
+
+
+docker-compose up -d --build
+
+docker-compose run webapp python3 manage.py makemigrations vue_test --settings=site_core.settings.development
+docker-compose run webapp python3 manage.py makemigrations polls --settings=site_core.settings.development
+docker-compose run webapp python3 manage.py makemigrations etextbook --settings=site_core.settings.development
+docker-compose run webapp python3 manage.py makemigrations contact --settings=site_core.settings.development
+docker-compose run webapp python3 manage.py makemigrations ajax_polls --settings=site_core.settings.development
+docker-compose run webapp python3 manage.py migrate --settings=site_core.settings.development
+docker-compose run webapp python3 manage.py createsuperuser --settings=site_core.settings.development
