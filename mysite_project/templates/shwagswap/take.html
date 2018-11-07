@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Shwag Swap{% endblock title %}
+{% block header %}Find Shwag{% endblock header %}
+
+{% block styles %}
+  {{ block.super }}
+<!--   <link rel="stylesheet" type="text/css" href="{% static 'polls/css/style.css' %}" /> -->
+{% endblock styles %}
+
+{% block content %}
+  <nav aria-label='breadcrumb'>
+    <ol class='breadcrumb'>
+      <li class='breadcrumb-item active' aria-current='page'>Available Shwag</li>
+    </ol>
+  </nav> 
+  <div>
+    {% if sought_out_shwag.exists %}
+      <ul class="list-group">
+        {% for sought_item in sought_out_shwag %}
+          <li class="list-group-item">
+          	<div><p>Have Item</p>
+          	<p>{{ sought_item.name }}</p>
+          	<p>{{ sought_item.item_type }}</p>
+          	<img src={{ sought_item.photo_site }}>
+            </div>
+          	<div>
+          	<p>{{ accepted_match }}</p>
+            </div>
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p class="empty">No one's posted any shwag yet.</p>
+    {% endif %}
+  </div>
+{% endblock content %}

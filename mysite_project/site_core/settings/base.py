@@ -16,7 +16,9 @@ INSTALLED_APPS = [
     'notegrid.apps.NotegridConfig',
     'simple_vue.apps.SimpleVueConfig',
     'vue_test.apps.VueTestConfig',
+    'shwagswap.apps.ShwagswapConfig',
     'rest_framework',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
