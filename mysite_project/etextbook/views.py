@@ -31,7 +31,7 @@ class SpreadsheetView(FormView):
         """Following a valid Post request, the form is saved to database and a custom function "convert_csv()" is run - with the output file returned to the user as an http response.""",
              ]
         context['description'] = description
-        return context 
+        return context
 
 
 def convert_csv(request):

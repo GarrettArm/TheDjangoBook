@@ -50,17 +50,3 @@ class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
     success_url = reverse_lazy('login')
     template_name = 'site_core/signup.html'
-
-
-# def register(request):
-#     if request.method == 'POST':
-#         f = UserCreationForm(request.POST)
-#         if f.is_valid():
-#             f.save()
-#             message.success(request, 'Account created successfully')
-#             return redirect('signup')
-#     else:
-#         f = UserCreationForm()
-#     return render(request, 'site_core/register.html', {'form': f})
-
-
