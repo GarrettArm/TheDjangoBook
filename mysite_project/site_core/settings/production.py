@@ -5,7 +5,8 @@ from .base import *
 
 DEBUG = False
 
-SECRET_KEY = os.environ['PROD_SECRET_KEY']
+with open('secret_keys.env', 'r') as f:
+    SECRET_KEY = f.read().strip()
 
 ALLOWED_HOSTS = ['18.188.30.182', 'gaularmstrong.com', 'www.gaularmstrong.com', '*', ]
 
