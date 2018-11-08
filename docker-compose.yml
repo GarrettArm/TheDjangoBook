@@ -17,6 +17,8 @@ services:
     command: gunicorn --bind :8000 site_core.wsgi:application
     volumes:
       - mysite_project:/code/
+      - static_volume:/var/www/django/static
+      - media_volume:/var/www/django/media
     env_file:
       - ./secret_keys.env
     networks:
@@ -31,6 +33,8 @@ services:
     container_name: DjangoSiteNginx
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - static_volume:/var/www/django/static
+      - media_volume:/var/www/django/media
     ports:
       - 8000:80
     depends_on:
@@ -42,6 +46,8 @@ services:
 volumes:
   postgres-data:
   mysite_project:
+  static_volume:
+  media_volume:
 
 
 networks:
