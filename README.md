@@ -4,7 +4,7 @@ The site is containerized: one docker for gunicorn+webapp, one for nginx, one fo
 
   - git clone --recursive https://github.com/GarrettArm/DjangoSite
   - cd DjangoSite
-  - docker-compose up --build  # assumes docker & docker-compose are installed
+  - docker-compose up -d --build
   - docker-compose run webapp python3 manage.py makemigrations shwagswap --settings=site_core.settings.production && docker-compose run webapp python3 manage.py makemigrations vue_test --settings=site_core.settings.production && docker-compose run webapp python3 manage.py makemigrations polls --settings=site_core.settings.production && docker-compose run webapp python3 manage.py makemigrations etextbook --settings=site_core.settings.production && docker-compose run webapp python3 manage.py makemigrations contact --settings=site_core.settings.production && docker-compose run webapp python3 manage.py makemigrations ajax_polls --settings=site_core.settings.production && docker-compose run webapp python3 manage.py migrate --settings=site_core.settings.production && docker-compose run webapp python3 manage.py createsuperuser --settings=site_core.settings.production && docker-compose run webapp python3 manage.py collectstatic --settings=site_core.settings.production
   - 127.0.0.1:8000
   
