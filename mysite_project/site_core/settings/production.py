@@ -1,11 +1,12 @@
 from .base import *
+import os
 
-with open('../../django_secret_key.txt', 'r') as f:
-    SECRET_KEY = f.read().strip()
+
+SECRET_KEY = os.environ['PROD_SECRET_KEY']
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['18.188.30.182', 'gaularmstrong.com', 'www.gaularmstrong.com']
+ALLOWED_HOSTS = ['18.188.30.182', 'gaularmstrong.com', 'www.gaularmstrong.com', '*']
 
 
 STATIC_URL = '/static/'

@@ -8,11 +8,13 @@ services:
       - postgres-data:/var/lib/postgresql/data
   webapp:
     build: ./mysite_project
-    command: python3 manage.py runserver 0.0.0.0:8000 --settings=site_core.settings.development
+    command: python3 manage.py runserver 0.0.0.0:8000 --settings=site_core.settings.production
     volumes:
       - mysite_project:/code/
     ports:
       - 8000:8000
+    env_file:
+      - ./secret_keys.env
     depends_on:
       - db
 
