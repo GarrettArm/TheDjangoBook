@@ -1,23 +1,40 @@
 version: '3'
 
+
 services:
   db:
     image: postgres
+    container_name: DjangoSitePostgres
     restart: always
     volumes:
       - postgres-data:/var/lib/postgresql/data
+    networks:
+      - postgres_network
+
   webapp:
     build: ./mysite_project
-    command: gunicorn site_core.wsgi
+    container_name: DjangoSiteDjango
+    command: gunicorn --bind :8000 site_core.wsgi:application
     volumes:
       - mysite_project:/code/
     ports:
       - 8000:8000
     env_file:
       - ./secret_keys.env
+    networks:
+      - nginx_network
+      - postgres_network
     depends_on:
       - db
+
 
 volumes:
   postgres-data:
   mysite_project:
+
+
+networks:
+  nginx_network:
+    driver: bridge
+  postgres_network:
+    driver: bridge

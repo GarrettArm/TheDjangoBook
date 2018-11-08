@@ -1,28 +1,3 @@
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-#  Usually these files are written by a python script from a template
-# Byte-compiled / optimized / DLL files
-# C extensions
-# celery beat schedule file
-# Distribution / packaging
-# Django stuff:
-# dotenv
-# Flask stuff:
-# Installer logs
-# Jupyter Notebook
-# jupyter notebooks
-# mkdocs documentation
-# mypy
-# PyBuilder
-# pyenv
-# PyInstaller
-# Rope project settings
-# SageMath parsed files
-# Scrapy stuff:
-# Sphinx documentation
-# Spyder project settings
-# Translations
-# Unit test / coverage reports
-# virtualenv
 *$py.class
 **/migrations/
 *.cover
@@ -88,3 +63,5 @@ target/
 var/
 venv/
 wheels/
+
+secret_keys.env
