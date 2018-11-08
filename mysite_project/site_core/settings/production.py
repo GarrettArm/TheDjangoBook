@@ -26,4 +26,4 @@ DATABASES = {
 MEDIA_ROOT = '/var/www/django/media'
 MEDIA_URL = '/media/'
 
-INTERNAL_IPS = ['127.0.0.1', ]
+INTERNAL_IPS = ['127.0.0.1', '*']
