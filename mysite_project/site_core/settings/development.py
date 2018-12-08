@@ -7,9 +7,9 @@ DEBUG = True
 
 SECRET_KEY = '386$!xv=xbqfw42#!#a*1zq+wo5^u(_v=y_%-myi&(yb)06pd_'
 
-INSTALLED_APPS += ['debug_toolbar', ]
+# INSTALLED_APPS += ['debug_toolbar', ]
 
-MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
+# MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
 
 DATABASES = {
     'default': {

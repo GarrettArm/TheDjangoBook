@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'shwagswap.apps.ShwagswapConfig',
     'rest_framework',
     'widget_tweaks',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,13 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
     ]
+}
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'react_assets/dist/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
