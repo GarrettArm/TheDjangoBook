@@ -1,12 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import App from './containers/App';
 
-class App extends React.Component {
-    render () {
-        return (
-            <h1>Django + React + Webpack + Babel</h1>
-        )
-    }
-}
+import '../scss/index.scss';
 
 ReactDOM.render(<App />, document.getElementById('react-app'));
