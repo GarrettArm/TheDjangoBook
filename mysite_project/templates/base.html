@@ -51,10 +51,10 @@
           <li><a href="{% url 'etextbook:upload' %}" class="sidebar-item">Repair eTextbook csv</a></li>
           <li><a href="{% url 'notegrid:notegrid' %}" class="sidebar-item">NoteGrid</a></li>
           <li><a href="{% url 'simple_vue:simple_vue' %}" class="sidebar-item">Simple Vue</a></li>
-          <li><a href="{% url 'vue_test:index' %}" class="sidebar-item">Vue + DRF</a></li>
+          <li><a href="{% url 'vue_test:index' %}" class="sidebar-item">Django Rest Framework</a></li>
           <li><a href="{% url 'shwag_swap:shwag_take' %}" class="sidebar-item">Shwag Swap</a></li>
           <li><a href="{% url 'react_example' %}" class="sidebar-item">React + Webpack</a></li>
-          {% if user.is_authenticated %}
+          {% if user.is_superuser %}
           <li><a href="{% url 'admin:index' %}" class="sidebar-item">Admin Panel</a></li>
           {% endif %}
         </ul>
