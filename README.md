@@ -15,3 +15,7 @@ You must specify the settings file since splitting it into dev & production vers
     run the tests 'python manage.py test polls --setting=mysite.settings.development'
 
 You may prefer to run the production version, but it relies on nginx & gunicorn.  These require your configuration.  I recommend using the development settings.  Production settings only run on the live site.
+
+To run webpack: `npm run watch`
+To run dev server: `python manage.py runserver --settings=site_core.settings.development`
+

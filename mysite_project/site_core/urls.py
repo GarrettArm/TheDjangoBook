@@ -19,7 +19,7 @@ urlpatterns = [
     path('ajax_polls/', include('ajax_polls.urls'), name='ajax_polls'),
     path('notegrid/', include('notegrid.urls'), name='notegrid'),
     path('simple_vue/', include('simple_vue.urls'), name='simple_vue'),
-    path('vue_drf/', include('vue_test.urls'), name='vue_test'),
+    path('drf/', include('vue_test.urls'), name='vue_test'),
     path('api_auth/', include('rest_framework.urls'), name='api_auth'),
     path('shwag_swap/', include('shwagswap.urls'), name='shwag_swap'),
     # path('chatroom/', include('chatroom.urls')),
