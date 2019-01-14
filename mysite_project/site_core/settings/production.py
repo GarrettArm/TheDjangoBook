@@ -7,7 +7,7 @@ DEBUG = False
 
 SECRET_KEY = os.environ['PROD_SECRET_KEY']
 
-ALLOWED_HOSTS = ['18.188.30.182', 'gaularmstrong.com', 'www.gaularmstrong.com', ]
+ALLOWED_HOSTS = ['*', '18.188.30.182', 'gaularmstrong.com', 'www.gaularmstrong.com', ]
 
 INTERNAL_IPS = ['127.0.0.1', ]
 

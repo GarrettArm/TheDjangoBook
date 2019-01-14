@@ -20,7 +20,7 @@ services:
       - static_volume:/var/www/django/static
       - media_volume:/var/www/django/media
     env_file:
-      - ./secret_keys.env
+      - ../django_secret_key.txt
     networks:
       - nginx_network
       - postgres_network
