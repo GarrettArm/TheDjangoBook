@@ -64,4 +64,7 @@ var/
 venv/
 wheels/
 
-secret_keys.env
+media/
+static/
+runserver_db
+node_modules/
