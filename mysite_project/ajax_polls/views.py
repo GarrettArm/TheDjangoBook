@@ -3,7 +3,7 @@ from django.views import generic
 from django.utils import timezone
 from django.http import JsonResponse
 
-from .models import Question, Choice
+from polls.models import Question, Choice
 
 
 class IndexView(generic.ListView):
