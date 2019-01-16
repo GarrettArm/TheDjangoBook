@@ -20,6 +20,7 @@ urlpatterns = [
     path('vue_drf/', include('vue_test.urls'), name='vue_test'),
     path('api_auth/', include('rest_framework.urls'), name='api_auth'),
     path('shwag_swap/', include('shwagswap.urls'), name='shwag_swap'),
+    path('chat/', include('chat.urls'), name='chat'),
     path('', views.FrontView.as_view(), name='frontpage'),
 ]
 

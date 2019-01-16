@@ -28,3 +28,12 @@ DATABASES = {
 INSTALLED_APPS += ['debug_toolbar', ]
 
 MIDDLEWARE += ['debug_toolbar.middleware.DebugToolbarMiddleware', ]
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [('127.0.0.1', 6379)],
+        },
+    },
+}

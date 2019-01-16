@@ -17,8 +17,10 @@ INSTALLED_APPS = [
     'simple_vue.apps.SimpleVueConfig',
     'vue_test.apps.VueTestConfig',
     'shwagswap.apps.ShwagswapConfig',
+    'chat.apps.ChatConfig',
     'rest_framework',
     'widget_tweaks',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -51,6 +53,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'site_core.wsgi.application'
+ASGI_APPLICATION = 'site_core.routing.application'
 
 REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': [
