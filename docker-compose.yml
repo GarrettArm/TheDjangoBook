@@ -14,7 +14,7 @@ services:
   webapp:
     build: ./mysite_project
     container_name: DjangoSiteDjango
-    command: gunicorn -w 3 -b :8000 site_core.wsgi
+    command: gunicorn -w 3 -b :8000 site_core.wsgi --reload
     volumes:
       - mysite_project:/code/
       - static_volume:/var/www/django/static
