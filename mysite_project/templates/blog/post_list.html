@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+  {{ block.super }}
+  <link href="https://fonts.googleapis.com/css?family=Great+Vibes" 
+    rel="stylesheet"> 
+  <link rel="stylesheet" type="text/css" href="{% static 'blog/css/style.css' %}">
+
+{% endblock styles %}
+
+{% block title %}Blog{% endblock title %}
+
+{% block header %}Blog{% endblock header %}
+
+{% block content %}
+{% for post in posts %}
+  <div class="post">
+    <h4>
+      <a href="{% url "blog:detail" pk=post.id %}" class="blog_header display-2">{{ post.title }}</a>
+      <h5 class="blockquote-footer" >{{ post.published_date }}</h5>
+    </h4>
+    {% for paragraph in post.text_as_list %}
+      <p class="blog_text text-justify">{{ paragraph }}</p>
+    {% endfor %}
+  </div>
+
+{% endfor %}
+{% endblock content %}

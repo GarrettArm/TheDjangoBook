@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'shwagswap.apps.ShwagswapConfig',
     'rest_framework',
     'widget_tweaks',
+    'blog.apps.BlogConfig',
 ]
 
 MIDDLEWARE = [
