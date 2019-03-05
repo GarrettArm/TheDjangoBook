@@ -1,5 +1,3 @@
-import datetime
-
 from django.views.generic import TemplateView
 from rest_framework import viewsets, generics
 from rest_framework import permissions
@@ -11,27 +9,34 @@ from .serializers import FuelEffeciencySerializer
 
 
 class FuelEffeciencyViewSet(viewsets.ModelViewSet):
-    queryset = FuelEffeciency.objects.all()
     serializer_class = FuelEffeciencySerializer
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     renderer_classes = (AdminRenderer, XMLRenderer, JSONRenderer, )
+
+    def get_queryset(self):
+        return FuelEffeciency.objects.all()
+
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
 
 class ClassBasedView(generics.ListCreateAPIView):
-    queryset = FuelEffeciency.objects.all()
     serializer_class = FuelEffeciencySerializer
     permission_classes = (permissions.AllowAny, )
+
+    def get_queryset(self):
+        return FuelEffeciency.objects.all()
 
     def perform_create(self, serializer):
         serializer.save(owner=self.request.user)
 
 
 class ClassBasedDetailView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = FuelEffeciency.objects.all()
     permission_classes = (permissions.IsAuthenticatedOrReadOnly, )
     serializer_class = FuelEffeciencySerializer
+
+    def get_queryset(self):
+        return FuelEffeciency.objects.all()
 
 
 class BaseView(TemplateView):
@@ -48,4 +53,4 @@ class BaseView(TemplateView):
         ]
         context['description'] = description
 
-        return context 
+        return context

@@ -11,13 +11,15 @@ from .models import Question, Choice
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
     context_object_name = 'latest_question_list'
-    queryset = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+    
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         description_text = [
             """This is the "hello world" app of django tutorials: <a href="https://docs.djangoproject.com/en/2.0/intro/tutorial01/">Polls</a>.""",
-             """It is a three-page-deep app that teaches the basics of the django framework:  setting up and interacting with sql, user authentication, styling, routing, etc.""",
+            """It is a three-page-deep app that teaches the basics of the django framework:  setting up and interacting with sql, user authentication, styling, routing, etc.""",
             ]
         context['description'] = description_text
         return context
@@ -26,7 +28,9 @@ class IndexView(generic.ListView):
 class DetailView(generic.DetailView):
     model = Question
     template_name = 'polls/detail.html'
-    queryset = Question.objects.filter(pub_date__lte=timezone.now())
+
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now())
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

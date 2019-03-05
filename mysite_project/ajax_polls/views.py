@@ -9,7 +9,9 @@ from polls.models import Question, Choice
 class IndexView(generic.ListView):
     template_name = 'ajax_polls/index.html'
     context_object_name = 'latest_question_list'
-    queryset = Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+
+    def get_queryset(self):
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -22,6 +24,7 @@ class IndexView(generic.ListView):
         ]
         context['description'] = description
         return context
+
 
 class AjaxDetails(generic.TemplateView):
     template_name = 'ajax_polls/index.html'
