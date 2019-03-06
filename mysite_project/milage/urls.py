@@ -3,7 +3,7 @@ from .routers import router
 from . import views
 
 
-app_name = 'vue_test'
+app_name = 'milage'
 urlpatterns = [
     path('api/', include(router.urls), name='api_router'),
     path('class-based/', views.ClassBasedView.as_view(), name='class_based_drf'),

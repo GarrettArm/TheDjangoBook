@@ -40,7 +40,7 @@ class ClassBasedDetailView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class BaseView(TemplateView):
-    template_name = 'vue_test/vue_test.html'
+    template_name = 'milage/milage.html'
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)

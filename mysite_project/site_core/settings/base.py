@@ -15,7 +15,7 @@ INSTALLED_APPS = [
     'ajax_polls.apps.AjaxPollsConfig',
     'notegrid.apps.NotegridConfig',
     'simple_vue.apps.SimpleVueConfig',
-    'vue_test.apps.VueTestConfig',
+    'milage.apps.MilageConfig',
     'shwagswap.apps.ShwagswapConfig',
     'rest_framework',
     'widget_tweaks',
