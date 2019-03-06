@@ -15,6 +15,11 @@
 {% endblock styles %}
 
 {% block content %}
+  <nav aria-label='breadcrumb'>
+    <ol class='breadcrumb'>
+      <li class='breadcrumb-item active' aria-current='page'>Poll Index</li>
+    </ol>
+  </nav> 
   <div>
     {% if latest_question_list %}
       <ul class="list-group">
