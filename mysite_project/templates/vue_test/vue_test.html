@@ -8,7 +8,6 @@
 {% block loadjs %}
   {{ block.super }}
   <script src="{% static 'vue/js/vue.js' %}" type="text/javascript"></script>
-  <!-- <script src="{% static 'vue/js/'} -->
 {% endblock loadjs %}
 
 {% block content %}
@@ -32,7 +31,7 @@
       <div class="col">
         <ul>
           <li><a href="{% url 'vue_test:api-root' %}" class="side_bar_item">DRF API Root</a></li>
-          <li><a href="{% url 'vue_test:fueleffeciency-list' %}" class="sidebar-item">Fuel Effenciency Routing</a></li>
+          <li><a href="{% url 'vue_test:FuelEffeciency-list' %}" class="sidebar-item">Fuel Effenciency Routing</a></li>
           <table class=table>
             <tr>
               <th>Item</th>
@@ -43,9 +42,9 @@
             {% for item_pk in db_pk %}
               <tr>
                 <td>{{ item_pk }}</td>
-                <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk %}" class="sidebar-item">html</a></td>
-                <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk 'xml' %}" class="sidebar-item">xml</a></td>
-                <td><a href="{% url 'vue_test:fueleffeciency-detail' item_pk 'json' %}" class="sidebar-item">json</a></td>
+                <td><a href="{% url 'vue_test:FuelEffeciency-detail' item_pk %}" class="sidebar-item">html</a></td>
+                <td><a href="{% url 'vue_test:FuelEffeciency-detail' item_pk 'xml' %}" class="sidebar-item">xml</a></td>
+                <td><a href="{% url 'vue_test:FuelEffeciency-detail' item_pk 'json' %}" class="sidebar-item">json</a></td>
               </tr>
             {% endfor item_pk %}  
           </table>
