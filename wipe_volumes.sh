@@ -45,13 +45,7 @@ docker image ls
 docker ps -a
 
 docker-compose up -d --build
-docker-compose run webapp python3 manage.py makemigrations vue_test polls etextbook contact ajax_polls shwagswap --settings=site_core.settings.production
-# docker-compose run webapp python3 manage.py makemigrations  --settings=site_core.settings.production
-# docker-compose run webapp python3 manage.py makemigrations  --settings=site_core.settings.production
-# docker-compose run webapp python3 manage.py makemigrations  --settings=site_core.settings.production
-# docker-compose run webapp python3 manage.py makemigrations  --settings=site_core.settings.production
-# docker-compose run webapp python3 manage.py makemigrations  --settings=site_core.settings.production
-docker-compose run webapp python3 manage.py migrate --settings=site_core.settings.production
-# docker-compose run webapp python3 manage.py createsuperuser --settings=site_core.settings.production
-docker-compose run webapp python3 manage.py collectstatic --settings=site_core.settings.production
-
+docker-compose run webapp python3 manage.py makemigrations vue_test polls etextbook contact ajax_polls shwagswap --settings=site_core.settings.development
+docker-compose run webapp python3 manage.py migrate --settings=site_core.settings.development
+# docker-compose run webapp python3 manage.py createsuperuser --settings=site_core.settings.development
+docker-compose run webapp python3 manage.py collectstatic --settings=site_core.settings.development
