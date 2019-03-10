@@ -16,7 +16,6 @@ urlpatterns = [
     path('polls/', include('polls.urls'), name='polls'),
     path('ajax_polls/', include('ajax_polls.urls'), name='ajax_polls'),
     path('notegrid/', include('notegrid.urls'), name='notegrid'),
-    path('simple_vue/', include('simple_vue.urls'), name='simple_vue'),
     path('rest_milage/', include('milage.urls'), name='milage'),
     path('api_auth/', include('rest_framework.urls'), name='api_auth'),
     path('shwag_swap/', include('shwagswap.urls'), name='shwag_swap'),

@@ -1,18 +1,20 @@
-docker system prune
+# for ((i=1;i<15;i++)); do
+#     docker stop djangosite_webapp_run_$i
+#     docker rm djangosite_webapp_run_$i
+# done
 
-for ((i=1;i<15;i++)); do
-    docker stop djangosite_webapp_run_$i
-    docker rm djangosite_webapp_run_$i
-done
-
-docker stop DjangoSiteDjango 
-docker rm DjangoSiteDjango
-docker volume rm djangosite_mysite_project
-docker image rm djangosite_webapp:latest
+# docker stop DjangoSiteDjango 
+# docker rm DjangoSiteDjango
+# docker volume rm djangosite_mysite_project
+# docker image rm djangosite_webapp:latest
 
 # docker stop DjangoSitePostgres 
 # docker rm DjangoSitePostgres
 # docker volume rm djangosite_postgres_data
+
+docker system prune
+docker-compose down
+docker volume rm djangosite_mysite_project
 
 docker volume ls
 docker image ls
