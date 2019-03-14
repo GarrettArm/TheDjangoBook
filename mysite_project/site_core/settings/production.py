@@ -11,12 +11,9 @@ ALLOWED_HOSTS = ['*', '18.188.30.182', 'gaularmstrong.com', 'www.gaularmstrong.c
 
 INTERNAL_IPS = ['127.0.0.1', ]
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = '/var/www/django/static'
 
 MEDIA_ROOT = '/var/www/django/media'
-MEDIA_URL = '/media/'
 
 DATABASES = {
     'default': {

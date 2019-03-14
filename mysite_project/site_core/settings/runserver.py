@@ -11,12 +11,9 @@ ALLOWED_HOSTS = ['*', ]
 
 INTERNAL_IPS = ['127.0.0.1', 'localhost', ]
 
-STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'), ]
 STATIC_ROOT = '../static'
 
 MEDIA_ROOT = '../media'
-MEDIA_URL = '/media/'
 
 DATABASES = {
     'default': {
