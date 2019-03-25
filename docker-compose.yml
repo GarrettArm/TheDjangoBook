@@ -39,7 +39,6 @@ services:
       - ./data/certbot/www:/var/www/certbot
       - static_volume:/var/www/django/static
       - media_volume:/var/www/django/media
-      - 
     ports:
       - "80:80"
       - "433:433"
