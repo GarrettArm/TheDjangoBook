@@ -37,7 +37,7 @@ services:
       - static_volume:/var/www/django/static
       - media_volume:/var/www/django/media
     ports:
-      - 8000:80
+      - 80:80
     depends_on:
       - webapp
     networks:
