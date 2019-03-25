@@ -41,7 +41,7 @@ services:
       - media_volume:/var/www/django/media
     ports:
       - "80:80"
-      - "433:433"
+      - "443:443"
     command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     depends_on:
       - webapp
@@ -50,6 +50,7 @@ services:
 
   certbot:
     image: certbot/certbot
+    container_name: DjangoSiteCertbot
     restart: unless-stopped
     volumes:
       - ./data/certbot/conf:/etc/letsencrypt
