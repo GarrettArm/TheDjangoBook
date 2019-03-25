@@ -1,5 +1,9 @@
 version: '3'
 
+/* 
+letencrypt config copied from 
+https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
+*/
 
 services:
   db:
@@ -27,21 +31,35 @@ services:
     depends_on:
       - db
 
-
   nginx:
     image: nginx:latest
     container_name: DjangoSiteNginx
+    restart: unless-stopped
     volumes:
       - ./config/nginx/conf.d:/etc/nginx/conf.d
-      - /etc/letsencrypt/:/etc/letsencrypt/
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
       - static_volume:/var/www/django/static
       - media_volume:/var/www/django/media
+      - 
     ports:
-      - 80:80
+      - "80:80"
+      - "433:433"
+    command: 
+      - "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     depends_on:
       - webapp
     networks:
       - nginx_network
+
+  certbot:
+    image: certbot/certbot
+    restart: unless-stopped
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint:
+      - "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
 
 volumes:
