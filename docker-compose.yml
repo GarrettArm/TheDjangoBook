@@ -1,9 +1,7 @@
 version: '3'
 
-/* 
-letencrypt config copied from 
-https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
-*/
+# letencrypt config copied from 
+# https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71
 
 services:
   db:
