@@ -23,3 +23,7 @@ You must specify the settings file since splitting it into dev & production vers
         '--settings=site_core.settings.production' or 
         '--settings=site_core.settings.development'
 
+To activate LetsEncrypt on your production box, (following https://medium.com/@pentacent/nginx-and-lets-encrypt-with-docker-in-less-than-5-minutes-b4b8a60d3a71 ), 
+
+  - sudo chmod +x init-letsencrypt.sh
+  - sudo ./init-letsencrypt.sh
