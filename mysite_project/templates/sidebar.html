@@ -1,0 +1,22 @@
+<div class="col-12 col-xl-2 col-lg-2 col-md-3 col-sm-4" id="sidebar">
+  {% block sidebar %}
+    <div class="sidebar-header">
+      <h1>Links</h1>
+    </div>
+    <ul class="sidebar-nav">
+      <li ><a href="\" class="sidebar-item">Base Template</a></li>
+      <li><a href="{% url 'current_date' %}" class="sidebar-item">Current Time</a></li>
+      <li><a href="{% url 'polls:index' %}" class="sidebar-item">Polls</a></li>
+      <li><a href="{% url 'ajax_polls:index' %}" class="sidebar-item">Polls w Ajax</a></li>
+      <li><a href="{% url 'contact:contact' %}" class="sidebar-item">Contact Us</a></li>
+      <li><a href="{% url 'etextbook:upload' %}" class="sidebar-item">Repair eTextbook csv</a></li>
+      <li><a href="{% url 'notegrid:notegrid' %}" class="sidebar-item">NoteGrid</a></li>
+      <li><a href="{% url 'milage:index' %}" class="sidebar-item">Milage w/ DRF</a></li>
+      <li><a href="{% url 'shwag_swap:shwag_take' %}" class="sidebar-item">Shwag Swap</a></li>
+      <li><a href="{% url 'blog:post_list' %}" class="sidebar-item">Blog</a></li>
+      {% if user.is_authenticated %}
+      <li><a href="{% url 'admin:index' %}" class="sidebar-item">Admin Panel</a></li>
+      {% endif %}
+    </ul>
+  {% endblock sidebar %}
+</div>

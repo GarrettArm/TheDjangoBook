@@ -13,8 +13,8 @@
       <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
       <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-			<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-			<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+	  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
       <link rel="stylesheet" type="text/css" href="{% static 'site_core/css/style.css' %}" />
       <link rel="icon" href="{% static 'site_core/favicon.png' %}" sizes="48x48" />
     {% endblock styles %}
@@ -24,45 +24,11 @@
 
   </head>
 
-  <div id="navbar" class="center navbar navbar-default navbar-color container-fluid no-gutters">
-        <div class="col-12 col-xl-2 col-lg-2 col-md-3 col-sm-4"></div>
-        <div class="col">
-          <h1 class="breadcrumb-item-active text-left">{% block header %}Base Header{% endblock header %}</h1>
-        </div>
-        <div class="col-auto">
-          {% if user.is_authenticated %}
-            <a href="/accounts/logout/" class="btn btn-info btn-sm" role="button">Logout {{ user.username }}</a>
-          {% else %}
-            <a href='/accounts/signup/' class='btn btn-info btn-sm' role='button'>Sign Up</a>
-            <a href="/accounts/login/" class="btn btn-info btn-sm" role="button">Login</a>
-          {% endif %}
-        </div>
-  </div>
+{% include "header.html" %}
 
   <div class="container-fluid" id="mainpage">
     <div class="row no-gutters">
-      <div class="col-12 col-xl-2 col-lg-2 col-md-3 col-sm-4" id="sidebar">
-        {% block sidebar %}
-        <div class="sidebar-header">
-          <h1>Links</h1>
-        </div>
-        <ul class="sidebar-nav">
-          <li ><a href="\" class="sidebar-item">Base Template</a></li>
-          <li><a href="{% url 'current_date' %}" class="sidebar-item">Current Time</a></li>
-          <li><a href="{% url 'polls:index' %}" class="sidebar-item">Polls</a></li>
-          <li><a href="{% url 'ajax_polls:index' %}" class="sidebar-item">Polls w Ajax</a></li>
-          <li><a href="{% url 'contact:contact' %}" class="sidebar-item">Contact Us</a></li>
-          <li><a href="{% url 'etextbook:upload' %}" class="sidebar-item">Repair eTextbook csv</a></li>
-          <li><a href="{% url 'notegrid:notegrid' %}" class="sidebar-item">NoteGrid</a></li>
-          <li><a href="{% url 'milage:index' %}" class="sidebar-item">Milage w/ DRF</a></li>
-          <li><a href="{% url 'shwag_swap:shwag_take' %}" class="sidebar-item">Shwag Swap</a></li>
-          <li><a href="{% url 'blog:post_list' %}" class="sidebar-item">Blog</a></li>
-          {% if user.is_authenticated %}
-          <li><a href="{% url 'admin:index' %}" class="sidebar-item">Admin Panel</a></li>
-          {% endif %}
-        </ul>
-        {% endblock sidebar %}
-      </div>
+      {% include "sidebar.html" %}    
 
       <div class="col" id="mainbox">
         {% block content %}
