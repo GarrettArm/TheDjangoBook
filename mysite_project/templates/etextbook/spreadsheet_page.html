@@ -4,23 +4,23 @@
 {% block title %}eTextbook{% endblock title %}
 
 {% block styles %}
-    {{ block.super }}
-    <link rel="stylesheet" type="text/css" href="{% static 'etextbook/css/style.css' %}" />
+  {{ block.super }}
+  <link rel="stylesheet" type="text/css" href="{% static 'etextbook/css/style.css' %}" />
 {% endblock styles %}
 
 {% block header %}Repair eTextbook csv{% endblock header %}
 
 {% block content %}
-    <div class='container-fluid row no-gutters'>
-        <h3>Let's repair a malformed Bookstore spreadsheet.</h3>
-    </div>
-    {{ form.errors }}
-    {{ form.non_field_errors }}
-    <div class="form-group">
-        <form method="post" enctype='multipart/form-data' class="form-control">
-            {% csrf_token %}
-            {{ form }}
-            <button type="submit">Submit</button>
-        </form>
-    </div>
+  <div class='container-fluid row no-gutters'>
+    <h3>Let's repair a malformed Bookstore spreadsheet.</h3>
+  </div>
+  {{ form.errors }}
+  {{ form.non_field_errors }}
+  <div class="form-group">
+    <form method="post" enctype='multipart/form-data' class="form-control">
+      {% csrf_token %}
+      {{ form }}
+      <button type="submit">Submit</button>
+    </form>
+  </div>
 {% endblock content %}

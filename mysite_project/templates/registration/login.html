@@ -4,9 +4,9 @@
 {% block header %}Login{% endblock header%}
 
 {% block content %}
-    <form action="." method="POST" class="container">
-        {{ form }}
-        {% csrf_token %}
-        <button class="btn btn-info">Login</button>
-    </form>
+  <form action="." method="POST" class="container">
+    {{ form }}
+    {% csrf_token %}
+    <button class="btn btn-info">Login</button>
+  </form>
 {% endblock content%}

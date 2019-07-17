@@ -21,13 +21,14 @@
       <ul class="list-group">
         {% for sought_item in sought_out_shwag %}
           <li class="list-group-item">
-          	<div><p>Have Item</p>
-          	<p>{{ sought_item.name }}</p>
-          	<p>{{ sought_item.item_type }}</p>
-          	<img src={{ sought_item.photo_site }}>
+            <div>
+              <p>Have Item</p>
+              <p>{{ sought_item.name }}</p>
+              <p>{{ sought_item.item_type }}</p>
+              <img src={{ sought_item.photo_site }}>
             </div>
           	<div>
-          	<p>{{ accepted_match }}</p>
+              <p>{{ accepted_match }}</p>
             </div>
           </li>
         {% endfor %}

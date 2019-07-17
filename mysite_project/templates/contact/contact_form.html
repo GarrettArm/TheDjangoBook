@@ -11,22 +11,22 @@
 {% endblock styles %}
 
 {% block content %}
-    <h1>Contact us</h1>
-    {% if form.errors %}
-        {% for field in form %}
-            {% for error in field.errors %}
-                <p style='color: red;'>"{{ field.name|title }}" has an error:  {{ error }}</p> 
-            {% endfor %}
-        {% endfor %}
-    {% endif %}
-    <div class="form-group">
+  <h1>Contact us</h1>
+  {% if form.errors %}
+    {% for field in form %}
+      {% for error in field.errors %}
+        <p style='color: red;'>"{{ field.name|title }}" has an error:  {{ error }}</p>
+      {% endfor %}
+    {% endfor %}
+  {% endif %}
+  <div class="form-group">
     <form action='' method='post' class="form-control">
-        <table class="display responsive" width="100%">
-            {{ form.as_table }}
-        </table>
-        {% csrf_token %}
-        <input type='submit' value='Submit'>
+      <table class="display responsive" width="100%">
+          {{ form.as_table }}
+      </table>
+      {% csrf_token %}
+      <input type='submit' value='Submit'>
     </form>
-    </div>
+  </div>
 {% endblock content %}
 

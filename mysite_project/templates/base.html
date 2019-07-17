@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang='en'>
+
 {% load static %}
 
   <head>
@@ -29,18 +30,17 @@
   <div class="container-fluid" id="mainpage">
     <div class="row no-gutters">
       {% include "sidebar.html" %}    
-
       <div class="col" id="mainbox">
         {% block content %}
           <p>Base Block Content</p>
         {% endblock content %}
+
         {% block description %}
           {% for paragraph in description %}
             <p class="text-muted">{{ paragraph|safe }}</p>
           {% endfor paragraph %}
         {% endblock description %}
       </div>
-
     </div>
   </div>
 

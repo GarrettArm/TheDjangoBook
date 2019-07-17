@@ -15,7 +15,8 @@
     <div class="row">
       <div class="col">
         <ul>
-          <li><a href="{% url 'milage:class_based_drf' %}" class="sidebar-item">Class Based DRF</a></li> <ul>
+          <li><a href="{% url 'milage:class_based_drf' %}" class="sidebar-item">Class Based DRF</a></li>
+          <ul>
             {% for item_pk in db_pk %}
               <li><a href="{% url 'milage:class_detail' item_pk %}" class="sidebar-item">Class Based Detail View DRF Item {{ item_pk }}</a></li>
             {% endfor item_pk %}
@@ -52,5 +53,4 @@
     </div>
   </div>
 </div>
-
 {% endblock content %}

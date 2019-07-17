@@ -1,4 +1,5 @@
 <div class="col-12 col-xl-2 col-lg-2 col-md-3 col-sm-4" id="sidebar">
+  
   {% block sidebar %}
     <div class="sidebar-header">
       <h1>Links</h1>
@@ -15,8 +16,9 @@
       <li><a href="{% url 'shwag_swap:shwag_take' %}" class="sidebar-item">Shwag Swap</a></li>
       <li><a href="{% url 'blog:post_list' %}" class="sidebar-item">Blog</a></li>
       {% if user.is_authenticated %}
-      <li><a href="{% url 'admin:index' %}" class="sidebar-item">Admin Panel</a></li>
+        <li><a href="{% url 'admin:index' %}" class="sidebar-item">Admin Panel</a></li>
       {% endif %}
     </ul>
   {% endblock sidebar %}
+
 </div>
