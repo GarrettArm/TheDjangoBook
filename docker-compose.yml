@@ -8,6 +8,7 @@ services:
     restart: always
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./sample_data:/docker-entrypoint-initdb.d/
     networks:
       - postgres_network
 

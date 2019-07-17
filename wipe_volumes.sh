@@ -14,7 +14,7 @@
 
 # docker system prune
 docker-compose down
-docker volume rm djangosite_mysite_project
+docker volume rm djangosite_mysite_project djangosite_postgres_data
 
 docker volume ls
 docker image ls
