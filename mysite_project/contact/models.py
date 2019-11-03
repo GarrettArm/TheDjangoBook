@@ -11,4 +11,4 @@ class Comment(models.Model):
         return self.subject
 
     class Meta:
-        ordering = ['creation_time']
+        ordering = ["creation_time"]

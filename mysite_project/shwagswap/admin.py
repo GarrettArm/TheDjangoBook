@@ -3,15 +3,15 @@ from .models import Shwag, ShwagType, Transaction
 
 
 class ShwagAdmin(admin.ModelAdmin):
-    list_display = ('name', 'item_type', 'photo_site', 'creation_time')
+    list_display = ("name", "item_type", "photo_site", "creation_time")
 
 
 class ShwagTypeAdmin(admin.ModelAdmin):
-    list_display = ('name', )
+    list_display = ("name",)
 
 
 class TransactionAdmin(admin.ModelAdmin):
-    list_display = ('creator', 'have_count', 'have_item', 'wanted_count', 'wanted_item')
+    list_display = ("creator", "have_count", "have_item", "wanted_count", "wanted_item")
 
 
 admin.site.register(Shwag, ShwagAdmin)

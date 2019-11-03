@@ -6,7 +6,14 @@ from .models import FuelEffeciency
 
 
 class FuelEffeciencyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'miles_driven', 'gallons_used', 'date_measured', 'date_recorded', 'owner',)
+    list_display = (
+        "id",
+        "miles_driven",
+        "gallons_used",
+        "date_measured",
+        "date_recorded",
+        "owner",
+    )
 
 
 admin.site.register(FuelEffeciency, FuelEffeciencyAdmin)

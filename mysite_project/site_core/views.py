@@ -9,7 +9,7 @@ from .forms import CustomUserCreationForm
 
 
 class FrontView(TemplateView):
-    template_name = 'site_core/frontpage.html'
+    template_name = "site_core/frontpage.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -21,28 +21,28 @@ class FrontView(TemplateView):
             """Nginx serves the static content (i.e., images, css, etc) and passes other requests to gunicorn.  Gunicorn runs several copies of the Django appserver, like mod_php for apache.  Django takes requests from gunicorn, processes them, and gives responses back to gunicorn.  Django is connected to a sql database.""",
             """Because the box is small and has little traffic, there is little cost except the annual domain name registration & EC2 subscription.""",
         ]
-        context['description'] = description_text
+        context["description"] = description_text
         return context
 
 
 class CurrentDateView(TemplateView):
-    template_name = 'dateapp/current_datetime.html'
+    template_name = "dateapp/current_datetime.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         current_time = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-        context['current_datestuff'] = current_time
+        context["current_datestuff"] = current_time
         description_text = [
             """This simple page shows how to insert a bit of information into the response.""",
             """When the Django app gets the request for this page, it runs <a href=https://github.com/GarrettArm/TheDjangoBook/blob/master/mysite_project/site_core/views.py>a little extra function "get context data"</a>:  it looks up the current time and it adds that information into the context.""",
             """When the <a href=https://github.com/GarrettArm/TheDjangoBook/blob/master/mysite_project/templates/dateapp/current_datetime.html>template</a> gets handed the context and told to make some html, it puts the square peg into the square hole, etc, then sends the generated html to gunicorn as response html.""",
         ]
-        context['description'] = description_text
+        context["description"] = description_text
         return context
 
 
 class MyLogoutView(LogoutView):
-    next_page = '/'
+    next_page = "/"
 
 
 class MyLoginView(LoginView):
@@ -51,5 +51,5 @@ class MyLoginView(LoginView):
 
 class SignUpView(generic.CreateView):
     form_class = CustomUserCreationForm
-    success_url = reverse_lazy('login')
-    template_name = 'site_core/signup.html'
+    success_url = reverse_lazy("login")
+    template_name = "site_core/signup.html"

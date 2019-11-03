@@ -7,11 +7,13 @@ from polls.models import Question, Choice
 
 
 class IndexView(generic.ListView):
-    template_name = 'ajax_polls/index.html'
-    context_object_name = 'latest_question_list'
+    template_name = "ajax_polls/index.html"
+    context_object_name = "latest_question_list"
 
     def get_queryset(self):
-        return Question.objects.filter(pub_date__lte=timezone.now()).order_by('-pub_date')[:5]
+        return Question.objects.filter(pub_date__lte=timezone.now()).order_by(
+            "-pub_date"
+        )[:5]
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -22,27 +24,31 @@ class IndexView(generic.ListView):
             """Here is the interesting part of ajax:  Activating the ajax functions sends a request to a different url from the one in the browser location bar.  You wire up the ajax url to hit a separate function in the appserver, which processes the ajax request and returns the response as json directly back to the requesting ajax.""",
             """""",
         ]
-        context['description'] = description
+        context["description"] = description
         return context
 
 
 class AjaxDetails(generic.TemplateView):
-    template_name = 'ajax_polls/index.html'
+    template_name = "ajax_polls/index.html"
     model = Question
 
     def get(self, request, *args, **kwargs):
-        if request.GET['function'] == 'pull_choices':
-            question_pk = request.GET['question_pk']
-            payload = {queryresponse.pk: {'choice_pk': queryresponse.pk,
-                    'choice_text': queryresponse.choice_text}
-                    for queryresponse in Choice.objects.filter(question_id=question_pk)}
+        if request.GET["function"] == "pull_choices":
+            question_pk = request.GET["question_pk"]
+            payload = {
+                queryresponse.pk: {
+                    "choice_pk": queryresponse.pk,
+                    "choice_text": queryresponse.choice_text,
+                }
+                for queryresponse in Choice.objects.filter(question_id=question_pk)
+            }
             return JsonResponse(payload)
 
     def post(self, request, *args, **kwargs):
-        choice_pk = request.POST['choice_pk']
-        question_pk = request.POST['question_pk']
+        choice_pk = request.POST["choice_pk"]
+        question_pk = request.POST["question_pk"]
         count = ajax_vote(question_pk, choice_pk)
-        payload = {'count': count, }
+        payload = {"count": count}
         return JsonResponse(payload)
 
 
